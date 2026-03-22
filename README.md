@@ -2,7 +2,7 @@
 
 Descriptive analysis of contribution patterns on [github/gh-aw](https://github.com/github/gh-aw), with a focus on what makes non-maintainer issue reports easiest to resolve in an agent-heavy repository.
 
-**Companion to ["The Agent Interface"](https://skahessay.dev/posts/the-agent-interface)** by [Sam Kahessay](https://github.com/samuelkahessay).
+**Companion to ["The Agent Interface"](https://skahessay.dev/posts/the-agent-interface)**.
 
 ## What This Is
 
