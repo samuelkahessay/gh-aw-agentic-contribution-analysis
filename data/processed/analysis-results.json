@@ -1,0 +1,1196 @@
+{
+  "composition": {
+    "total": 7684,
+    "bot": {
+      "count": 6648,
+      "pct": 86.5
+    },
+    "maintainer": {
+      "count": 696,
+      "pct": 9.1
+    },
+    "community": {
+      "count": 340,
+      "pct": 4.4
+    },
+    "ratio_bot_per_community": 19,
+    "timeline": {
+      "community_by_month": {
+        "2025-08": 5,
+        "2025-09": 1,
+        "2025-10": 6,
+        "2025-12": 5,
+        "2026-01": 10,
+        "2026-02": 144,
+        "2026-03": 169
+      },
+      "maintainer_by_month": {
+        "2025-07": 1,
+        "2025-08": 65,
+        "2025-09": 92,
+        "2025-10": 130,
+        "2025-11": 64,
+        "2025-12": 24,
+        "2026-01": 84,
+        "2026-02": 146,
+        "2026-03": 90
+      },
+      "bot_by_month": {
+        "2025-08": 57,
+        "2025-09": 160,
+        "2025-10": 239,
+        "2025-11": 582,
+        "2025-12": 754,
+        "2026-01": 1250,
+        "2026-02": 2513,
+        "2026-03": 1093
+      }
+    }
+  },
+  "intake_paths": {
+    "human_filed": 1036,
+    "community_labeled": 297,
+    "maintainer_unlabeled": 739,
+    "community_label_rate": 28.7,
+    "top_labels": {
+      "community": 216,
+      "ai-inspected": 137,
+      "bug": 54,
+      "workflows": 41,
+      "enhancement": 21,
+      "cli": 12,
+      "security": 10,
+      "spam": 10,
+      "awf": 8,
+      "question": 8,
+      "documentation": 7,
+      "scout": 6,
+      "automation": 5,
+      "gateway": 4,
+      "ai-generated": 3
+    }
+  },
+  "controllable": {
+    "signals_all": {
+      "hasCodeBlock": {
+        "with": {
+          "n": 179,
+          "medianDays": 0.198,
+          "sameDayPct": 80.4
+        },
+        "without": {
+          "n": 111,
+          "medianDays": 0.221,
+          "sameDayPct": 73.9
+        },
+        "deltaPct": -10.2
+      },
+      "hasErrorOutput": {
+        "with": {
+          "n": 152,
+          "medianDays": 0.22,
+          "sameDayPct": 81.6
+        },
+        "without": {
+          "n": 138,
+          "medianDays": 0.176,
+          "sameDayPct": 73.9
+        },
+        "deltaPct": 24.5
+      },
+      "hasRunLink": {
+        "with": {
+          "n": 32,
+          "medianDays": 0.195,
+          "sameDayPct": 87.5
+        },
+        "without": {
+          "n": 258,
+          "medianDays": 0.202,
+          "sameDayPct": 76.7
+        },
+        "deltaPct": -3.6
+      },
+      "hasFilePath": {
+        "with": {
+          "n": 150,
+          "medianDays": 0.195,
+          "sameDayPct": 84.7
+        },
+        "without": {
+          "n": 140,
+          "medianDays": 0.22,
+          "sameDayPct": 70.7
+        },
+        "deltaPct": -11.3
+      },
+      "hasProposedCode": {
+        "with": {
+          "n": 125,
+          "medianDays": 0.199,
+          "sameDayPct": 83.2
+        },
+        "without": {
+          "n": 165,
+          "medianDays": 0.203,
+          "sameDayPct": 73.9
+        },
+        "deltaPct": -2.0
+      },
+      "hasSuggestedFix": {
+        "with": {
+          "n": 192,
+          "medianDays": 0.196,
+          "sameDayPct": 81.8
+        },
+        "without": {
+          "n": 98,
+          "medianDays": 0.225,
+          "sameDayPct": 70.4
+        },
+        "deltaPct": -12.9
+      },
+      "hasReproSteps": {
+        "with": {
+          "n": 116,
+          "medianDays": 0.169,
+          "sameDayPct": 86.2
+        },
+        "without": {
+          "n": 174,
+          "medianDays": 0.231,
+          "sameDayPct": 72.4
+        },
+        "deltaPct": -26.8
+      }
+    },
+    "signals_bugs": {
+      "hasErrorOutput": {
+        "with": {
+          "n": 27,
+          "medianDays": 0.507,
+          "sameDayPct": 66.7
+        },
+        "without": {
+          "n": 11,
+          "medianDays": 2.742,
+          "sameDayPct": 36.4
+        },
+        "deltaPct": -81.5
+      },
+      "hasRunLink": {
+        "with": {
+          "n": 4,
+          "medianDays": 0.389,
+          "sameDayPct": 100.0
+        },
+        "without": {
+          "n": 34,
+          "medianDays": 0.579,
+          "sameDayPct": 52.9
+        },
+        "deltaPct": -32.8
+      },
+      "hasCodeBlock": {
+        "with": {
+          "n": 30,
+          "medianDays": 0.564,
+          "sameDayPct": 56.7
+        },
+        "without": {
+          "n": 8,
+          "medianDays": 0.461,
+          "sameDayPct": 62.5
+        },
+        "deltaPct": 22.2
+      },
+      "hasFilePath": {
+        "with": {
+          "n": 27,
+          "medianDays": 0.558,
+          "sameDayPct": 59.3
+        },
+        "without": {
+          "n": 11,
+          "medianDays": 0.656,
+          "sameDayPct": 54.5
+        },
+        "deltaPct": -15.0
+      },
+      "hasProposedCode": {
+        "with": {
+          "n": 21,
+          "medianDays": 0.507,
+          "sameDayPct": 66.7
+        },
+        "without": {
+          "n": 17,
+          "medianDays": 1.156,
+          "sameDayPct": 47.1
+        },
+        "deltaPct": -56.2
+      }
+    },
+    "category": {
+      "doc": {
+        "total": 17,
+        "closed": 14,
+        "open": 3,
+        "closeRate": 82.4,
+        "medianDays": 0.231,
+        "meanDays": 1.235,
+        "sameDayPct": 78.6,
+        "copilotDispatchPct": 23.5
+      },
+      "bug": {
+        "total": 51,
+        "closed": 38,
+        "open": 13,
+        "closeRate": 74.5,
+        "medianDays": 0.564,
+        "meanDays": 3.28,
+        "sameDayPct": 57.9,
+        "copilotDispatchPct": 11.8
+      },
+      "enhancement": {
+        "total": 18,
+        "closed": 13,
+        "open": 5,
+        "closeRate": 72.2,
+        "medianDays": 2.974,
+        "meanDays": 5.735,
+        "sameDayPct": 38.5,
+        "copilotDispatchPct": 0.0
+      },
+      "uncategorized": {
+        "total": 254,
+        "closed": 225,
+        "open": 29,
+        "closeRate": 88.6,
+        "medianDays": 0.142,
+        "meanDays": 2.263,
+        "sameDayPct": 83.6,
+        "copilotDispatchPct": 11.8
+      }
+    },
+    "scope": {
+      "none": {
+        "n": 140,
+        "medianDays": 0.22,
+        "sameDayPct": 70.7
+      },
+      "narrow": {
+        "n": 130,
+        "medianDays": 0.201,
+        "sameDayPct": 84.6
+      },
+      "medium": {
+        "n": 20,
+        "medianDays": 0.149,
+        "sameDayPct": 85.0
+      },
+      "wide": {
+        "n": 0,
+        "medianDays": null,
+        "sameDayPct": null
+      }
+    },
+    "length": {
+      "tiny": {
+        "n": 53,
+        "medianDays": 0.086,
+        "sameDayPct": 75.5
+      },
+      "short": {
+        "n": 75,
+        "medianDays": 0.201,
+        "sameDayPct": 73.3
+      },
+      "medium": {
+        "n": 70,
+        "medianDays": 0.176,
+        "sameDayPct": 75.7
+      },
+      "long": {
+        "n": 65,
+        "medianDays": 0.218,
+        "sameDayPct": 87.7
+      },
+      "very_long": {
+        "n": 27,
+        "medianDays": 0.339,
+        "sameDayPct": 77.8
+      }
+    }
+  },
+  "threshold": {
+    "decision_free": {
+      "n": 258,
+      "medianDays": 0.196,
+      "meanDays": 2.485,
+      "sameDayPct": 79.5
+    },
+    "decision_required": {
+      "n": 33,
+      "medianDays": 0.563,
+      "meanDays": 2.583,
+      "sameDayPct": 66.7
+    }
+  },
+  "threshold_distributions": {
+    "decision_free": [
+      0.0001,
+      0.0001,
+      0.0001,
+      0.0001,
+      0.0001,
+      0.0001,
+      0.0001,
+      0.0001,
+      0.0002,
+      0.0002,
+      0.0005,
+      0.0009,
+      0.001,
+      0.0011,
+      0.0012,
+      0.002,
+      0.0077,
+      0.0109,
+      0.0115,
+      0.0119,
+      0.0131,
+      0.0161,
+      0.0182,
+      0.0203,
+      0.0226,
+      0.0242,
+      0.0267,
+      0.0312,
+      0.0313,
+      0.0317,
+      0.0319,
+      0.0329,
+      0.033,
+      0.0352,
+      0.0377,
+      0.0391,
+      0.0414,
+      0.0415,
+      0.0448,
+      0.0454,
+      0.0456,
+      0.0493,
+      0.0514,
+      0.0515,
+      0.0516,
+      0.0518,
+      0.0535,
+      0.0555,
+      0.0563,
+      0.0566,
+      0.0568,
+      0.0577,
+      0.0583,
+      0.0586,
+      0.0596,
+      0.0598,
+      0.0603,
+      0.0608,
+      0.0615,
+      0.0616,
+      0.0627,
+      0.0629,
+      0.0704,
+      0.0723,
+      0.0725,
+      0.0741,
+      0.0746,
+      0.0756,
+      0.0764,
+      0.0774,
+      0.0777,
+      0.078,
+      0.0788,
+      0.0798,
+      0.0812,
+      0.0826,
+      0.0855,
+      0.0875,
+      0.0882,
+      0.0891,
+      0.0906,
+      0.0925,
+      0.0931,
+      0.0934,
+      0.0975,
+      0.0982,
+      0.0994,
+      0.1,
+      0.1062,
+      0.1076,
+      0.1088,
+      0.1106,
+      0.1116,
+      0.115,
+      0.1161,
+      0.1189,
+      0.119,
+      0.1201,
+      0.1251,
+      0.1262,
+      0.129,
+      0.1291,
+      0.1295,
+      0.1312,
+      0.1316,
+      0.134,
+      0.1354,
+      0.1367,
+      0.1388,
+      0.1402,
+      0.1418,
+      0.1456,
+      0.1457,
+      0.1469,
+      0.149,
+      0.1506,
+      0.154,
+      0.1562,
+      0.1595,
+      0.1642,
+      0.1652,
+      0.1696,
+      0.1727,
+      0.1789,
+      0.1807,
+      0.1809,
+      0.183,
+      0.191,
+      0.1932,
+      0.1982,
+      0.1991,
+      0.2007,
+      0.2032,
+      0.2167,
+      0.2178,
+      0.2182,
+      0.2193,
+      0.2197,
+      0.2208,
+      0.2264,
+      0.2269,
+      0.2288,
+      0.2299,
+      0.2302,
+      0.2315,
+      0.232,
+      0.2322,
+      0.2328,
+      0.2392,
+      0.2395,
+      0.2403,
+      0.2431,
+      0.2461,
+      0.2484,
+      0.2596,
+      0.2607,
+      0.2655,
+      0.269,
+      0.2713,
+      0.2722,
+      0.2752,
+      0.2776,
+      0.2814,
+      0.2816,
+      0.2837,
+      0.2881,
+      0.2918,
+      0.2933,
+      0.2984,
+      0.3312,
+      0.3389,
+      0.3509,
+      0.3534,
+      0.3719,
+      0.3735,
+      0.3748,
+      0.3871,
+      0.3954,
+      0.4007,
+      0.4051,
+      0.4335,
+      0.4416,
+      0.4451,
+      0.4542,
+      0.4848,
+      0.5066,
+      0.5165,
+      0.5689,
+      0.5759,
+      0.5892,
+      0.5969,
+      0.6195,
+      0.6251,
+      0.6565,
+      0.6677,
+      0.6711,
+      0.6765,
+      0.7029,
+      0.7104,
+      0.7337,
+      0.7385,
+      0.7636,
+      0.7685,
+      0.8256,
+      0.9828,
+      1.0194,
+      1.1564,
+      1.1734,
+      1.1882,
+      1.2133,
+      1.2445,
+      1.2631,
+      1.2912,
+      1.3391,
+      1.3989,
+      1.4419,
+      1.4853,
+      1.4874,
+      1.5512,
+      1.5542,
+      1.5656,
+      1.9068,
+      2.555,
+      2.7423,
+      3.0431,
+      3.4387,
+      3.7146,
+      3.7788,
+      3.9047,
+      3.9445,
+      4.0651,
+      4.2299,
+      4.4279,
+      5.0051,
+      5.2001,
+      5.2258,
+      5.9335,
+      6.9836,
+      7.5773,
+      7.7362,
+      7.7573,
+      8.2902,
+      8.3515,
+      8.9156,
+      10.684,
+      11.0902,
+      15.1218,
+      16.2176,
+      18.045,
+      18.108,
+      20.2958,
+      22.1887,
+      25.8371,
+      27.0693,
+      35.255,
+      55.3062,
+      57.2864,
+      129.0009
+    ],
+    "decision_required": [
+      0.0057,
+      0.0181,
+      0.0219,
+      0.0578,
+      0.0653,
+      0.0689,
+      0.0697,
+      0.0813,
+      0.1006,
+      0.129,
+      0.1391,
+      0.1589,
+      0.1792,
+      0.287,
+      0.509,
+      0.5581,
+      0.5627,
+      0.6498,
+      0.7385,
+      0.7945,
+      0.8164,
+      0.9398,
+      1.3514,
+      1.8695,
+      2.4607,
+      2.9736,
+      3.0381,
+      4.0173,
+      7.4141,
+      8.1707,
+      8.9433,
+      11.9538,
+      26.0921
+    ]
+  },
+  "uncontrollable": {
+    "copilot_dispatch": {
+      "dispatched": {
+        "n": 37,
+        "medianDays": 0.198
+      },
+      "not_dispatched": {
+        "n": 253,
+        "medianDays": 0.203
+      }
+    },
+    "reporter_frequency": {
+      "frequent": {
+        "n": 103,
+        "medianDays": 0.179,
+        "authors": 13
+      },
+      "infrequent": {
+        "n": 187,
+        "medianDays": 0.23,
+        "authors": 142
+      }
+    }
+  },
+  "archetypes": [
+    {
+      "author": "samuelkahessay",
+      "totalIssues": 26,
+      "closed": 21,
+      "open": 5,
+      "closeRate": 80.8,
+      "medianDays": 0.227,
+      "avgBodyLength": 4164,
+      "categories": {
+        "doc": 1,
+        "uncategorized": 15,
+        "bug": 8,
+        "enhancement": 2
+      },
+      "copilotDispatched": 4,
+      "copilotRate": 15.4
+    },
+    {
+      "author": "benvillalobos",
+      "totalIssues": 18,
+      "closed": 16,
+      "open": 2,
+      "closeRate": 88.9,
+      "medianDays": 0.1,
+      "avgBodyLength": 3185,
+      "categories": {
+        "uncategorized": 14,
+        "bug": 1,
+        "enhancement": 2,
+        "doc": 1
+      },
+      "copilotDispatched": 3,
+      "copilotRate": 16.7
+    },
+    {
+      "author": "johnwilliams-12",
+      "totalIssues": 13,
+      "closed": 11,
+      "open": 2,
+      "closeRate": 84.6,
+      "medianDays": 0.159,
+      "avgBodyLength": 9692,
+      "categories": {
+        "uncategorized": 10,
+        "bug": 3
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "jaroslawgajewski",
+      "totalIssues": 12,
+      "closed": 11,
+      "open": 1,
+      "closeRate": 91.7,
+      "medianDays": 0.576,
+      "avgBodyLength": 1260,
+      "categories": {
+        "uncategorized": 10,
+        "enhancement": 1,
+        "bug": 1
+      },
+      "copilotDispatched": 2,
+      "copilotRate": 16.7
+    },
+    {
+      "author": "tore-unumed",
+      "totalIssues": 8,
+      "closed": 7,
+      "open": 1,
+      "closeRate": 87.5,
+      "medianDays": 0.281,
+      "avgBodyLength": 2275,
+      "categories": {
+        "uncategorized": 5,
+        "bug": 2,
+        "doc": 1
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "kdehl16-web",
+      "totalIssues": 8,
+      "closed": 8,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.0,
+      "avgBodyLength": 35,
+      "categories": {
+        "uncategorized": 8
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "arezero",
+      "totalIssues": 7,
+      "closed": 5,
+      "open": 2,
+      "closeRate": 71.4,
+      "medianDays": 0.098,
+      "avgBodyLength": 1621,
+      "categories": {
+        "uncategorized": 6,
+        "bug": 1
+      },
+      "copilotDispatched": 2,
+      "copilotRate": 28.6
+    },
+    {
+      "author": "microsasa",
+      "totalIssues": 6,
+      "closed": 3,
+      "open": 3,
+      "closeRate": 50.0,
+      "medianDays": 0.26,
+      "avgBodyLength": 2910,
+      "categories": {
+        "uncategorized": 5,
+        "bug": 1
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "srgibbs99",
+      "totalIssues": 6,
+      "closed": 6,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.501,
+      "avgBodyLength": 3104,
+      "categories": {
+        "bug": 2,
+        "uncategorized": 4
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "Corb3nik",
+      "totalIssues": 5,
+      "closed": 3,
+      "open": 2,
+      "closeRate": 60.0,
+      "medianDays": 0.179,
+      "avgBodyLength": 9193,
+      "categories": {
+        "uncategorized": 4,
+        "bug": 1
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "grahame-white",
+      "totalIssues": 5,
+      "closed": 4,
+      "open": 1,
+      "closeRate": 80.0,
+      "medianDays": 0.199,
+      "avgBodyLength": 4012,
+      "categories": {
+        "uncategorized": 3,
+        "bug": 2
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "Yoyokrazy",
+      "totalIssues": 5,
+      "closed": 3,
+      "open": 2,
+      "closeRate": 60.0,
+      "medianDays": 0.137,
+      "avgBodyLength": 2978,
+      "categories": {
+        "uncategorized": 3,
+        "bug": 1,
+        "doc": 1
+      },
+      "copilotDispatched": 1,
+      "copilotRate": 20.0
+    },
+    {
+      "author": "jeremiah-snee-openx",
+      "totalIssues": 5,
+      "closed": 5,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.078,
+      "avgBodyLength": 1546,
+      "categories": {
+        "uncategorized": 3,
+        "doc": 2
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "bbonafed",
+      "totalIssues": 4,
+      "closed": 4,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.186,
+      "avgBodyLength": 3794,
+      "categories": {
+        "uncategorized": 3,
+        "enhancement": 1
+      },
+      "copilotDispatched": 3,
+      "copilotRate": 75.0
+    },
+    {
+      "author": "danielmeppiel",
+      "totalIssues": 4,
+      "closed": 4,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.176,
+      "avgBodyLength": 3612,
+      "categories": {
+        "uncategorized": 2,
+        "doc": 1,
+        "bug": 1
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "veverkap",
+      "totalIssues": 4,
+      "closed": 3,
+      "open": 1,
+      "closeRate": 75.0,
+      "medianDays": 0.038,
+      "avgBodyLength": 2185,
+      "categories": {
+        "uncategorized": 4
+      },
+      "copilotDispatched": 2,
+      "copilotRate": 50.0
+    },
+    {
+      "author": "tspascoal",
+      "totalIssues": 4,
+      "closed": 4,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.053,
+      "avgBodyLength": 1353,
+      "categories": {
+        "uncategorized": 3,
+        "doc": 1
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "rspurgeon",
+      "totalIssues": 4,
+      "closed": 4,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.532,
+      "avgBodyLength": 1084,
+      "categories": {
+        "bug": 1,
+        "uncategorized": 2,
+        "doc": 1
+      },
+      "copilotDispatched": 3,
+      "copilotRate": 75.0
+    },
+    {
+      "author": "ViktorHofer",
+      "totalIssues": 4,
+      "closed": 3,
+      "open": 1,
+      "closeRate": 75.0,
+      "medianDays": 0.063,
+      "avgBodyLength": 1055,
+      "categories": {
+        "uncategorized": 3,
+        "bug": 1
+      },
+      "copilotDispatched": 1,
+      "copilotRate": 25.0
+    },
+    {
+      "author": "steliosfran",
+      "totalIssues": 4,
+      "closed": 4,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.244,
+      "avgBodyLength": 4382,
+      "categories": {
+        "uncategorized": 4
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "chrizbo",
+      "totalIssues": 3,
+      "closed": 3,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.164,
+      "avgBodyLength": 3667,
+      "categories": {
+        "uncategorized": 3
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "NicoAvanzDev",
+      "totalIssues": 3,
+      "closed": 3,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.193,
+      "avgBodyLength": 2715,
+      "categories": {
+        "uncategorized": 3
+      },
+      "copilotDispatched": 1,
+      "copilotRate": 33.3
+    },
+    {
+      "author": "Rubyj",
+      "totalIssues": 3,
+      "closed": 1,
+      "open": 2,
+      "closeRate": 33.3,
+      "medianDays": 0.703,
+      "avgBodyLength": 3068,
+      "categories": {
+        "uncategorized": 2,
+        "bug": 1
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "mvdbos",
+      "totalIssues": 3,
+      "closed": 2,
+      "open": 1,
+      "closeRate": 66.7,
+      "medianDays": 1.888,
+      "avgBodyLength": 15184,
+      "categories": {
+        "uncategorized": 2,
+        "doc": 1
+      },
+      "copilotDispatched": 1,
+      "copilotRate": 33.3
+    },
+    {
+      "author": "straub",
+      "totalIssues": 3,
+      "closed": 2,
+      "open": 1,
+      "closeRate": 66.7,
+      "medianDays": 2.01,
+      "avgBodyLength": 1383,
+      "categories": {
+        "bug": 1,
+        "uncategorized": 2
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "dsolteszopyn",
+      "totalIssues": 3,
+      "closed": 3,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.088,
+      "avgBodyLength": 362,
+      "categories": {
+        "uncategorized": 3
+      },
+      "copilotDispatched": 1,
+      "copilotRate": 33.3
+    },
+    {
+      "author": "dhrapson",
+      "totalIssues": 3,
+      "closed": 3,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.232,
+      "avgBodyLength": 2206,
+      "categories": {
+        "uncategorized": 3
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "ppusateri",
+      "totalIssues": 3,
+      "closed": 3,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.14,
+      "avgBodyLength": 2483,
+      "categories": {
+        "uncategorized": 2,
+        "enhancement": 1
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "timdittler",
+      "totalIssues": 3,
+      "closed": 3,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.057,
+      "avgBodyLength": 1860,
+      "categories": {
+        "uncategorized": 3
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "dunalduck0",
+      "totalIssues": 3,
+      "closed": 3,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.292,
+      "avgBodyLength": 1381,
+      "categories": {
+        "uncategorized": 3
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "devantler",
+      "totalIssues": 3,
+      "closed": 3,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.077,
+      "avgBodyLength": 534,
+      "categories": {
+        "uncategorized": 2,
+        "bug": 1
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "juliengloria",
+      "totalIssues": 3,
+      "closed": 3,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.671,
+      "avgBodyLength": 830,
+      "categories": {
+        "uncategorized": 3
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "davidslater",
+      "totalIssues": 3,
+      "closed": 3,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.076,
+      "avgBodyLength": 1314,
+      "categories": {
+        "uncategorized": 3
+      },
+      "copilotDispatched": 0,
+      "copilotRate": 0.0
+    },
+    {
+      "author": "quartermaine",
+      "totalIssues": 3,
+      "closed": 3,
+      "open": 0,
+      "closeRate": 100.0,
+      "medianDays": 0.768,
+      "avgBodyLength": 655,
+      "categories": {
+        "doc": 2,
+        "uncategorized": 1
+      },
+      "copilotDispatched": 1,
+      "copilotRate": 33.3
+    }
+  ],
+  "pr_analysis": {
+    "linked_issues": 142,
+    "total_community": 340,
+    "merged_prs": 142,
+    "bot_authored_pct": 95.1,
+    "issue_to_pr_median_days": 0.143,
+    "pr_to_merge_median_days": 0.027,
+    "issue_to_merge_median_days": 0.21,
+    "same_day_merge_pct": 71.4
+  },
+  "pr_implementers": {
+    "app/copilot-swe-agent": 119,
+    "app/github-actions": 12,
+    "app/dependabot": 4,
+    "lpcox": 2,
+    "Mossaka": 2,
+    "samueltauil": 1,
+    "strawgate": 1,
+    "clubanderson": 1
+  },
+  "pr_mergers": {
+    "pelikhan": 139,
+    "lpcox": 2,
+    "Mossaka": 1
+  }
+}
