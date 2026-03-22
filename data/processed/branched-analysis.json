@@ -1101,6 +1101,344 @@
       "issue_to_merge_median_days": 0.116
     }
   },
+  "contributor_variance": {
+    "authors_analyzed": 12,
+    "authors_with_variance": 9,
+    "fast_pool_n": 120,
+    "slow_pool_n": 30,
+    "aggregate_signal_diff": {
+      "hasCodeBlock": {
+        "fast_pct": 50.8,
+        "slow_pct": 50.0,
+        "diff_pp": 0.8
+      },
+      "hasErrorOutput": {
+        "fast_pct": 49.2,
+        "slow_pct": 53.3,
+        "diff_pp": -4.1
+      },
+      "hasRunLink": {
+        "fast_pct": 4.2,
+        "slow_pct": 3.3,
+        "diff_pp": 0.9
+      },
+      "hasFilePath": {
+        "fast_pct": 44.2,
+        "slow_pct": 46.7,
+        "diff_pp": -2.5
+      },
+      "hasLineNumber": {
+        "fast_pct": 15.0,
+        "slow_pct": 6.7,
+        "diff_pp": 8.3
+      },
+      "hasProposedCode": {
+        "fast_pct": 33.3,
+        "slow_pct": 23.3,
+        "diff_pp": 10.0
+      },
+      "hasSuggestedFix": {
+        "fast_pct": 67.5,
+        "slow_pct": 66.7,
+        "diff_pp": 0.8
+      },
+      "hasReproSteps": {
+        "fast_pct": 34.2,
+        "slow_pct": 36.7,
+        "diff_pp": -2.5
+      }
+    },
+    "per_author": [
+      {
+        "author": "strawgate",
+        "total_closed": 60,
+        "fast_n": 49,
+        "slow_n": 11,
+        "fast_medianDays": 0.104,
+        "slow_medianDays": 4.756,
+        "fast_signals": {
+          "hasCodeBlock": 38.8,
+          "hasErrorOutput": 20.4,
+          "hasRunLink": 6.1,
+          "hasFilePath": 24.5,
+          "hasLineNumber": 6.1,
+          "hasProposedCode": 22.4,
+          "hasSuggestedFix": 46.9,
+          "hasReproSteps": 14.3
+        },
+        "slow_signals": {
+          "hasCodeBlock": 54.5,
+          "hasErrorOutput": 45.5,
+          "hasRunLink": 0.0,
+          "hasFilePath": 54.5,
+          "hasLineNumber": 9.1,
+          "hasProposedCode": 18.2,
+          "hasSuggestedFix": 63.6,
+          "hasReproSteps": 18.2
+        },
+        "fast_avgBodyLength": 759.327,
+        "slow_avgBodyLength": 1690.636,
+        "fast_avgQuality": 1.184,
+        "slow_avgQuality": 1.818
+      },
+      {
+        "author": "samuelkahessay",
+        "total_closed": 21,
+        "fast_n": 20,
+        "slow_n": 1,
+        "fast_medianDays": 0.224,
+        "slow_medianDays": 7.757,
+        "fast_signals": {
+          "hasCodeBlock": 70.0,
+          "hasErrorOutput": 80.0,
+          "hasRunLink": 5.0,
+          "hasFilePath": 95.0,
+          "hasLineNumber": 70.0,
+          "hasProposedCode": 60.0,
+          "hasSuggestedFix": 100.0,
+          "hasReproSteps": 35.0
+        },
+        "slow_signals": {
+          "hasCodeBlock": 0.0,
+          "hasErrorOutput": 100.0,
+          "hasRunLink": 0.0,
+          "hasFilePath": 100.0,
+          "hasLineNumber": 100.0,
+          "hasProposedCode": 0.0,
+          "hasSuggestedFix": 100.0,
+          "hasReproSteps": 0.0
+        },
+        "fast_avgBodyLength": 3786,
+        "slow_avgBodyLength": 4050,
+        "fast_avgQuality": 3.8,
+        "slow_avgQuality": 3
+      },
+      {
+        "author": "bmerkle",
+        "total_closed": 20,
+        "fast_n": 15,
+        "slow_n": 5,
+        "fast_medianDays": 0.218,
+        "slow_medianDays": 4.556,
+        "fast_signals": {
+          "hasCodeBlock": 46.7,
+          "hasErrorOutput": 40.0,
+          "hasRunLink": 0.0,
+          "hasFilePath": 13.3,
+          "hasLineNumber": 6.7,
+          "hasProposedCode": 0.0,
+          "hasSuggestedFix": 53.3,
+          "hasReproSteps": 0.0
+        },
+        "slow_signals": {
+          "hasCodeBlock": 20.0,
+          "hasErrorOutput": 60.0,
+          "hasRunLink": 20.0,
+          "hasFilePath": 20.0,
+          "hasLineNumber": 0.0,
+          "hasProposedCode": 0.0,
+          "hasSuggestedFix": 40.0,
+          "hasReproSteps": 20.0
+        },
+        "fast_avgBodyLength": 1069.133,
+        "slow_avgBodyLength": 2023.4,
+        "fast_avgQuality": 1.067,
+        "slow_avgQuality": 1.2
+      },
+      {
+        "author": "jaroslawgajewski",
+        "total_closed": 11,
+        "fast_n": 6,
+        "slow_n": 5,
+        "fast_medianDays": 0.225,
+        "slow_medianDays": 1.399,
+        "fast_signals": {
+          "hasCodeBlock": 50.0,
+          "hasErrorOutput": 83.3,
+          "hasRunLink": 16.7,
+          "hasFilePath": 33.3,
+          "hasLineNumber": 0.0,
+          "hasProposedCode": 16.7,
+          "hasSuggestedFix": 50.0,
+          "hasReproSteps": 33.3
+        },
+        "slow_signals": {
+          "hasCodeBlock": 40.0,
+          "hasErrorOutput": 20.0,
+          "hasRunLink": 0.0,
+          "hasFilePath": 20.0,
+          "hasLineNumber": 0.0,
+          "hasProposedCode": 0.0,
+          "hasSuggestedFix": 80.0,
+          "hasReproSteps": 40.0
+        },
+        "fast_avgBodyLength": 1608.833,
+        "slow_avgBodyLength": 1057.8,
+        "fast_avgQuality": 2,
+        "slow_avgQuality": 0.8
+      },
+      {
+        "author": "johnwilliams-12",
+        "total_closed": 11,
+        "fast_n": 10,
+        "slow_n": 1,
+        "fast_medianDays": 0.146,
+        "slow_medianDays": 2.461,
+        "fast_signals": {
+          "hasCodeBlock": 100.0,
+          "hasErrorOutput": 80.0,
+          "hasRunLink": 0.0,
+          "hasFilePath": 100.0,
+          "hasLineNumber": 0.0,
+          "hasProposedCode": 100.0,
+          "hasSuggestedFix": 100.0,
+          "hasReproSteps": 100.0
+        },
+        "slow_signals": {
+          "hasCodeBlock": 100.0,
+          "hasErrorOutput": 100.0,
+          "hasRunLink": 0.0,
+          "hasFilePath": 100.0,
+          "hasLineNumber": 0.0,
+          "hasProposedCode": 100.0,
+          "hasSuggestedFix": 100.0,
+          "hasReproSteps": 100.0
+        },
+        "fast_avgBodyLength": 9790.4,
+        "slow_avgBodyLength": 8044,
+        "fast_avgQuality": 3.8,
+        "slow_avgQuality": 4
+      },
+      {
+        "author": "davidahmann",
+        "total_closed": 9,
+        "fast_n": 8,
+        "slow_n": 1,
+        "fast_medianDays": 0.117,
+        "slow_medianDays": 1.767,
+        "fast_signals": {
+          "hasCodeBlock": 0.0,
+          "hasErrorOutput": 62.5,
+          "hasRunLink": 0.0,
+          "hasFilePath": 37.5,
+          "hasLineNumber": 0.0,
+          "hasProposedCode": 0.0,
+          "hasSuggestedFix": 62.5,
+          "hasReproSteps": 75.0
+        },
+        "slow_signals": {
+          "hasCodeBlock": 0.0,
+          "hasErrorOutput": 0.0,
+          "hasRunLink": 0.0,
+          "hasFilePath": 0.0,
+          "hasLineNumber": 0.0,
+          "hasProposedCode": 0.0,
+          "hasSuggestedFix": 100.0,
+          "hasReproSteps": 0.0
+        },
+        "fast_avgBodyLength": 1236.875,
+        "slow_avgBodyLength": 754,
+        "fast_avgQuality": 1,
+        "slow_avgQuality": 0
+      },
+      {
+        "author": "tore-unumed",
+        "total_closed": 7,
+        "fast_n": 4,
+        "slow_n": 3,
+        "fast_medianDays": 0.207,
+        "slow_medianDays": 6.984,
+        "fast_signals": {
+          "hasCodeBlock": 100.0,
+          "hasErrorOutput": 75.0,
+          "hasRunLink": 0.0,
+          "hasFilePath": 0.0,
+          "hasLineNumber": 0.0,
+          "hasProposedCode": 75.0,
+          "hasSuggestedFix": 100.0,
+          "hasReproSteps": 25.0
+        },
+        "slow_signals": {
+          "hasCodeBlock": 100.0,
+          "hasErrorOutput": 66.7,
+          "hasRunLink": 0.0,
+          "hasFilePath": 66.7,
+          "hasLineNumber": 0.0,
+          "hasProposedCode": 66.7,
+          "hasSuggestedFix": 33.3,
+          "hasReproSteps": 66.7
+        },
+        "fast_avgBodyLength": 2028.5,
+        "slow_avgBodyLength": 2944.333,
+        "fast_avgQuality": 2.5,
+        "slow_avgQuality": 3
+      },
+      {
+        "author": "srgibbs99",
+        "total_closed": 6,
+        "fast_n": 4,
+        "slow_n": 2,
+        "fast_medianDays": 0.291,
+        "slow_medianDays": 1.181,
+        "fast_signals": {
+          "hasCodeBlock": 100.0,
+          "hasErrorOutput": 75.0,
+          "hasRunLink": 0.0,
+          "hasFilePath": 50.0,
+          "hasLineNumber": 0.0,
+          "hasProposedCode": 75.0,
+          "hasSuggestedFix": 100.0,
+          "hasReproSteps": 100.0
+        },
+        "slow_signals": {
+          "hasCodeBlock": 100.0,
+          "hasErrorOutput": 100.0,
+          "hasRunLink": 0.0,
+          "hasFilePath": 50.0,
+          "hasLineNumber": 0.0,
+          "hasProposedCode": 100.0,
+          "hasSuggestedFix": 100.0,
+          "hasReproSteps": 100.0
+        },
+        "fast_avgBodyLength": 3131,
+        "slow_avgBodyLength": 3050,
+        "fast_avgQuality": 3,
+        "slow_avgQuality": 3.5
+      },
+      {
+        "author": "arezero",
+        "total_closed": 5,
+        "fast_n": 4,
+        "slow_n": 1,
+        "fast_medianDays": 0.078,
+        "slow_medianDays": 4.065,
+        "fast_signals": {
+          "hasCodeBlock": 0.0,
+          "hasErrorOutput": 75.0,
+          "hasRunLink": 0.0,
+          "hasFilePath": 75.0,
+          "hasLineNumber": 0.0,
+          "hasProposedCode": 0.0,
+          "hasSuggestedFix": 100.0,
+          "hasReproSteps": 100.0
+        },
+        "slow_signals": {
+          "hasCodeBlock": 0.0,
+          "hasErrorOutput": 100.0,
+          "hasRunLink": 0.0,
+          "hasFilePath": 100.0,
+          "hasLineNumber": 0.0,
+          "hasProposedCode": 0.0,
+          "hasSuggestedFix": 100.0,
+          "hasReproSteps": 100.0
+        },
+        "fast_avgBodyLength": 1143.5,
+        "slow_avgBodyLength": 1195,
+        "fast_avgQuality": 1.5,
+        "slow_avgQuality": 2
+      }
+    ]
+  },
   "lead_candidates": [
     {
       "type": "signal_reversal",
@@ -1168,6 +1506,17 @@
       "comparison": "enhancement_vs_change_shaped",
       "cells_with_3x": 5,
       "note": "enhancement_vs_change_shaped: >=3x ratio in 5 matched cells"
+    },
+    {
+      "type": "contributor_variance",
+      "note": "1 signals differ by >=10pp between same contributors' fast vs slow issues",
+      "signals": {
+        "hasProposedCode": {
+          "fast_pct": 33.3,
+          "slow_pct": 23.3,
+          "diff_pp": 10.0
+        }
+      }
     }
   ]
 }

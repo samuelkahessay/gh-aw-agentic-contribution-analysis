@@ -529,6 +529,125 @@ if not lead_candidates:
     print("  (no findings cleared lead thresholds)")
 
 # ---------------------------------------------------------------------------
+# 8. Contributor variance (same person, different outcomes)
+# ---------------------------------------------------------------------------
+
+print("\n" + "=" * 60)
+print("CONTRIBUTOR VARIANCE")
+print("=" * 60)
+
+MIN_ISSUES_VARIANCE = 5  # need enough issues to split fast/slow
+
+author_issue_map = {}
+for i in closed:
+    author_issue_map.setdefault(i["author"], []).append(i)
+
+# Filter to contributors with enough closed issues
+variance_authors = {
+    author: issues for author, issues in author_issue_map.items()
+    if len(issues) >= MIN_ISSUES_VARIANCE
+}
+
+print(f"  Contributors with >= {MIN_ISSUES_VARIANCE} closed issues: {len(variance_authors)}")
+
+# For each author, split their issues into fast (<1d) and slow (>=1d)
+# Then compare signal profiles between their fast and slow issues
+contributor_variance = []
+fast_pool_all = []
+slow_pool_all = []
+
+for author, issues in sorted(variance_authors.items(), key=lambda x: -len(x[1])):
+    fast = [i for i in issues if i["daysToClose"] < 1]
+    slow = [i for i in issues if i["daysToClose"] >= 1]
+
+    if not fast or not slow:
+        continue  # need both fast and slow to measure variance
+
+    fast_pool_all.extend(fast)
+    slow_pool_all.extend(slow)
+
+    # Signal prevalence in fast vs slow
+    fast_signals = {}
+    slow_signals = {}
+    for f in signal_fields:
+        fast_signals[f] = pct(sum(1 for i in fast if i[f]), len(fast))
+        slow_signals[f] = pct(sum(1 for i in slow if i[f]), len(slow))
+
+    contributor_variance.append({
+        "author": author,
+        "total_closed": len(issues),
+        "fast_n": len(fast),
+        "slow_n": len(slow),
+        "fast_medianDays": safe_median([i["daysToClose"] for i in fast]),
+        "slow_medianDays": safe_median([i["daysToClose"] for i in slow]),
+        "fast_signals": fast_signals,
+        "slow_signals": slow_signals,
+        "fast_avgBodyLength": safe_mean([i["bodyLength"] for i in fast]),
+        "slow_avgBodyLength": safe_mean([i["bodyLength"] for i in slow]),
+        "fast_avgQuality": safe_mean([i["qualityScore"] for i in fast]),
+        "slow_avgQuality": safe_mean([i["qualityScore"] for i in slow]),
+    })
+
+print(f"  Contributors with both fast and slow issues: {len(contributor_variance)}")
+print(f"  Total fast issues (pooled): {len(fast_pool_all)}")
+print(f"  Total slow issues (pooled): {len(slow_pool_all)}")
+
+# Aggregate signal profile: across ALL contributors with variance,
+# what signals are more common in their fast issues vs slow issues?
+aggregate_signal_diff = {}
+if fast_pool_all and slow_pool_all:
+    print("\n  --- Pooled signal prevalence (fast vs slow, same contributors) ---")
+    for f in signal_fields:
+        fast_pct = pct(sum(1 for i in fast_pool_all if i[f]), len(fast_pool_all))
+        slow_pct = pct(sum(1 for i in slow_pool_all if i[f]), len(slow_pool_all))
+        diff = round(fast_pct - slow_pct, 1)
+        aggregate_signal_diff[f] = {
+            "fast_pct": fast_pct,
+            "slow_pct": slow_pct,
+            "diff_pp": diff,
+        }
+        direction = "+" if diff > 0 else ""
+        print(f"    {f}: fast={fast_pct}%, slow={slow_pct}%, diff={direction}{diff}pp")
+
+    # Category distribution in fast vs slow
+    fast_cats = Counter(i["category"] for i in fast_pool_all)
+    slow_cats = Counter(i["category"] for i in slow_pool_all)
+    print("\n  --- Category distribution (fast vs slow) ---")
+    for cat in ["bug", "enhancement", "uncategorized", "doc"]:
+        fp = pct(fast_cats.get(cat, 0), len(fast_pool_all))
+        sp = pct(slow_cats.get(cat, 0), len(slow_pool_all))
+        print(f"    {cat}: fast={fp}%, slow={sp}%")
+
+    # Body length comparison
+    fast_avg_body = safe_mean([i["bodyLength"] for i in fast_pool_all])
+    slow_avg_body = safe_mean([i["bodyLength"] for i in slow_pool_all])
+    print(f"\n  Avg body length: fast={fast_avg_body}, slow={slow_avg_body}")
+
+contributor_variance_results = {
+    "authors_analyzed": len(variance_authors),
+    "authors_with_variance": len(contributor_variance),
+    "fast_pool_n": len(fast_pool_all),
+    "slow_pool_n": len(slow_pool_all),
+    "aggregate_signal_diff": aggregate_signal_diff,
+    "per_author": contributor_variance,
+}
+
+# Add to lead candidates if signal differences are substantial
+strong_diffs = [
+    (f, d) for f, d in aggregate_signal_diff.items()
+    if abs(d["diff_pp"]) >= 10
+]
+if strong_diffs:
+    lead_candidates.append({
+        "type": "contributor_variance",
+        "note": f"{len(strong_diffs)} signals differ by >=10pp between same contributors' fast vs slow issues",
+        "signals": {f: d for f, d in strong_diffs},
+    })
+    print(f"\n  LEAD: {len(strong_diffs)} signals with >=10pp difference")
+else:
+    print("\n  No signals differ by >=10pp (not lead-worthy)")
+
+# ---------------------------------------------------------------------------
 # Output
 # ---------------------------------------------------------------------------
 
@@ -541,6 +660,7 @@ results = {
     "enhancement_shape": enhancement_shape,
     "label_selection_effect": label_selection_effect,
     "pr_linkage_by_category": pr_linkage_by_category,
+    "contributor_variance": contributor_variance_results,
     "lead_candidates": lead_candidates,
 }
 

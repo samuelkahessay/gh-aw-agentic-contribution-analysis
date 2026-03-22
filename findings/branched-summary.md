@@ -32,3 +32,4 @@
 - **enhancement_bimodality**: Enhancement closure is bimodal: gap of 6.005d between fast and slow clusters
 - **label_selection_effect**: bug_vs_failure_shaped: >=3x ratio in 5 matched cells
 - **label_selection_effect**: enhancement_vs_change_shaped: >=3x ratio in 5 matched cells
+- **contributor_variance**: 1 signals differ by >=10pp between same contributors' fast vs slow issues
