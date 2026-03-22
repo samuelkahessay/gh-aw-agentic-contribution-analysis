@@ -1,27 +1,18 @@
 #!/usr/bin/env python3
 """
-Extract quality signals and classify categories for all community issues.
+Extract descriptive issue-body signals for non-maintainer human issues.
 
-Signals extracted from issue body:
-- hasCodeBlock: contains ``` fenced code
-- hasErrorOutput: contains error messages, stack traces, exit codes
-- hasRunLink: contains actions/runs/ URL
-- hasFilePath: references source files (.go, .ts, .js, .yaml, .json)
-- hasLineNumber: references file:linenum pattern
-- hasProposedCode: contains code in diff/go/yaml/typescript blocks
-- hasSuggestedFix: uses fix/solution/workaround language
-- bodyLength: character count
+Signals extracted from each issue body:
+- code blocks
+- error output
+- run links
+- file paths
+- line numbers
+- proposed code
+- suggested-fix language
+- reproduction steps
 
-Category classification:
-- doc: documentation label or doc-related title
-- bug: bug label
-- enhancement: enhancement or feature-request label
-- uncategorized: no matching label
-
-Copilot dispatch detection:
-- copilotDispatched: any comment contains @copilot
-
-Outputs: data/processed/community-signals.json
+Categories are heuristic label/title buckets used for descriptive analysis only.
 """
 import json
 import re
@@ -44,8 +35,8 @@ authors = author_data["authors"]
 CODE_BLOCK = re.compile(r"```")
 ERROR_OUTPUT = re.compile(r"(?i)(error[: ]|failed|ENOENT|EACCES|exit code|stderr|panic|Cannot |fatal |exception|stack trace)")
 RUN_LINK = re.compile(r"actions/runs/")
-FILE_PATH = re.compile(r"[a-zA-Z_/]+\.(go|ts|js|yaml|yml|json|cjs|mjs)")
-LINE_NUMBER = re.compile(r"\.(go|ts|js|cjs):\d+")
+FILE_PATH = re.compile(r"[a-zA-Z_][a-zA-Z0-9_/.-]+\.(?:go|ts|js|yaml|yml|json|cjs|mjs)")
+LINE_NUMBER = re.compile(r"\.(?:go|ts|js|yaml|yml|json|cjs|mjs):\d+")
 PROPOSED_CODE = re.compile(r"```(diff|go|typescript|yaml|javascript|ts|js)")
 SUGGESTED_FIX = re.compile(r"(?i)(suggest|fix|solution|workaround|proposed|could be|should be|instead of)")
 REPRO_STEPS = re.compile(r"(?i)(repro|steps to|how to reproduce|to reproduce)")
@@ -84,13 +75,10 @@ def extract_signals(issue):
         except (ValueError, TypeError):
             pass
 
-    # Time to first label (intake speed)
-    # Labels don't have timestamps in our data, so we'll approximate
-    # by checking if the issue was labeled at all
     has_any_label = len(labels) > 0
 
-    # File path count (scope proxy)
-    file_paths = set(re.findall(r"[a-zA-Z_][a-zA-Z0-9_/.-]+\.(go|ts|js|yaml|yml|json|cjs|mjs)", body))
+    # Scope proxy: distinct full file paths mentioned in the body.
+    file_paths = set(FILE_PATH.findall(body))
 
     return {
         "number": issue["number"],
@@ -103,6 +91,7 @@ def extract_signals(issue):
         "bodyLength": len(body),
         "category": category,
         "labels": labels,
+        "hasCommunityLabel": "community" in labels,
         "commentCount": len(comments),
         "copilotDispatched": copilot_dispatched,
         "hasAnyLabel": has_any_label,
@@ -151,6 +140,9 @@ print(f"=== Signal Extraction ===")
 print(f"Community issues processed: {len(community_issues)}")
 print(f"Maintainer issues processed: {len(maintainer_issues)}")
 print(f"Bot issues counted: {bot_issues_summary['count']}")
+if community_issues:
+    labeled = sum(1 for issue in community_issues if issue["hasCommunityLabel"])
+    print(f"Community label coverage on community issues: {labeled}/{len(community_issues)} ({labeled * 100 / len(community_issues):.1f}%)")
 
 # Community signal distribution
 print(f"\n=== Community Signal Distribution ===")
@@ -209,6 +201,7 @@ output = {
         "maintainer_count": len(maintainer_issues),
         "bot_count": bot_issues_summary["count"],
         "total": len(issues),
+        "community_labeled_community_issues": sum(1 for issue in community_issues if issue["hasCommunityLabel"]),
     }
 }
 

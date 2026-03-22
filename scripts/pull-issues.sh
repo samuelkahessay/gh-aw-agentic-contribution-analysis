@@ -32,10 +32,6 @@ gh pr list --repo "$REPO" --state merged --limit 5000 \
   > "$RAW_DIR/pr-mergers.json"
 echo "Merged PRs: $(jq length "$RAW_DIR/pr-mergers.json")"
 
-echo "=== Pulling PR review comments (reviewer identification) ==="
-gh api "repos/$REPO/pulls/comments" --paginate --jq '.' \
-  > "$RAW_DIR/pr-review-comments.json" 2>/dev/null || echo "PR comments: paginated API may need manual handling"
-
 echo "=== Done ==="
 echo "Raw data saved to $RAW_DIR/"
 ls -lh "$RAW_DIR/"

@@ -1,20 +1,11 @@
 #!/usr/bin/env python3
 """
-Link community issues to their fix PRs and releases.
+Link community issues to fix PRs using high-confidence closing references only.
 
-Linkage methods:
-1. PR body contains "fixes #N", "closes #N", "resolves #N"
-2. PR body contains "#N" reference
-3. PR title contains issue number
-
-For linked PRs, extract:
-- Agent vs human author
-- Time from issue creation to PR creation
-- Time from PR creation to merge
-- Lines changed, files changed
-- Review rounds (comment count as proxy)
-
-Outputs: data/processed/issue-pr-linkage.json
+This script intentionally prefers precision over recall. It only accepts GitHub's
+native closing phrases such as "fixes #123" or "closes #123" found in PR bodies
+or titles. Plain "#123" mentions are excluded because they generate too many
+false positives in gh-aw.
 """
 import json
 import re
@@ -31,29 +22,33 @@ with open(RAW / "all-prs.json") as f:
 with open(PROC / "community-signals.json") as f:
     signals = json.load(f)
 
-with open(RAW / "all-releases.json") as f:
-    releases = json.load(f)
-
 community_issues = {i["number"]: i for i in signals["community_issues"]}
 
 # --- Build PR → issue linkage ---
 CLOSE_PATTERN = re.compile(r"(?i)(?:fix(?:es)?|close[sd]?|resolve[sd]?)\s+#(\d+)")
-REF_PATTERN = re.compile(r"#(\d+)")
 
-pr_to_issues = defaultdict(set)
 issue_to_prs = defaultdict(list)
+excluded_negative_links = 0
 
 for pr in prs:
     body = pr.get("body") or ""
     title = pr.get("title") or ""
     text = body + " " + title
 
-    # Find all #N references in body and title
-    for match in REF_PATTERN.finditer(text):
+    for match in CLOSE_PATTERN.finditer(text):
         issue_num = int(match.group(1))
         if issue_num in community_issues:
-            pr_to_issues[pr["number"]].add(issue_num)
-            if not any(p["number"] == pr["number"] for p in issue_to_prs[issue_num]):
+            issue_created = community_issues[issue_num].get("createdAt")
+            pr_created = pr.get("createdAt")
+
+            if issue_created and pr_created:
+                issue_dt = datetime.fromisoformat(issue_created.replace("Z", "+00:00"))
+                pr_dt = datetime.fromisoformat(pr_created.replace("Z", "+00:00"))
+                if pr_dt < issue_dt:
+                    excluded_negative_links += 1
+                    continue
+
+            if not any(existing["number"] == pr["number"] for existing in issue_to_prs[issue_num]):
                 issue_to_prs[issue_num].append(pr)
 
 # --- Enrich linkage data ---
@@ -120,6 +115,7 @@ for issue_num, linked_prs in issue_to_prs.items():
             "additions": pr.get("additions", 0),
             "deletions": pr.get("deletions", 0),
             "changedFiles": pr.get("changedFiles", 0),
+            "linkageMethod": "explicit_closing_reference",
             "issueToprDays": round(issue_to_pr_days, 4) if issue_to_pr_days is not None else None,
             "prToMergeDays": round(pr_to_merge_days, 4) if pr_to_merge_days is not None else None,
             "issueToMergeDays": round(issue_to_merge_days, 4) if issue_to_merge_days is not None else None,
@@ -134,6 +130,7 @@ print(f"=== Issue → PR Linkage ===")
 print(f"  Community issues with linked PRs: {len(linked_issues)} / {len(community_issues)}")
 print(f"  Total linkages: {len(linkages)}")
 print(f"  Merged linkages: {len(merged_linkages)}")
+print(f"  Excluded negative-time links: {excluded_negative_links}")
 print(f"  Bot-authored merged PRs: {len(bot_authored_prs)} ({len(bot_authored_prs)*100/len(merged_linkages) if merged_linkages else 0:.1f}%)")
 
 if merged_linkages:
@@ -182,11 +179,14 @@ for merger, count in merger_counts.most_common(10):
 output = {
     "linkages": linkages,
     "summary": {
+        "confidence": "high",
+        "method": "explicit closing references only",
         "community_issues_total": len(community_issues),
         "issues_with_linked_prs": len(linked_issues),
         "total_linkages": len(linkages),
         "merged_linkages": len(merged_linkages),
         "bot_authored_merged": len(bot_authored_prs),
+        "excluded_negative_links": excluded_negative_links,
     }
 }
 

@@ -1,33 +1,39 @@
 # gh-aw Agentic Contribution Analysis
 
-Empirical analysis of community contribution patterns on [github/gh-aw](https://github.com/github/gh-aw) — the first major open-source repository where agents implement most fixes.
+Descriptive analysis of contribution patterns on [github/gh-aw](https://github.com/github/gh-aw), with a focus on what makes non-maintainer issue reports easiest to resolve in an agent-heavy repository.
 
 **Companion to ["The Agent Interface"](https://skahessay.dev/posts/the-agent-interface)** by [Sam Kahessay](https://github.com/samuelkahessay).
 
 ## What This Is
 
-When you file an issue on an agentic repo, you're not requesting human labor — you're describing work to a machine. This repo contains the data, methodology, and analysis behind the question: **what makes that work agent-compatible?**
+This repo contains the data pull, heuristics, and rollup scripts behind the essay.
+
+The emphasis is descriptive, not causal:
+
+- author roles are defined conservatively
+- issue categories are heuristic label/title buckets
+- PR linkage is high precision and low recall
+
+The goal is to make every published number traceable to code and generated artifacts.
 
 ## Dataset
 
-- **7,683 total issues** on github/gh-aw
-- **6,592 bot-filed** (86%) — smoke tests, triage reports, audits
-- **297 community-labeled** (external humans from 114+ contributors)
-- **~48 maintainer-filed** (internal, identified by PR merge rights)
-- **All PRs** with author, reviewer, merge data, linked issues
-- **All releases** with notes, dates, credited issues
+- **7,684 total issues** on github/gh-aw
+- **6,648 bot-authored issues** (86.5%)
+- **601 maintainer-authored issues** (7.8%)
+- **435 community issues** from **158** non-maintainer human contributors (5.7%)
+- **259 / 435** community issues carry the `community` label (59.5% coverage)
+- **13** high-confidence issue → PR links via explicit closing references
 
 ## Key Findings
 
-See the full analysis in the [blog post](https://skahessay.dev/posts/the-agent-interface). Headlines:
+See the full analysis in the [blog post](https://skahessay.dev/posts/the-agent-interface). Current headlines:
 
-1. The platform is 86% agent-generated — human issues enter a system built by and for agents
-2. Community issues pass through an automated intake pipeline before a human sees them
-3. Category framing (bug vs enhancement) is the strongest lever reporters control
-4. Run links (`actions/runs/`) reduce median resolution time by 82%
-5. Proposed code *inversely* correlates with speed — it's a proxy for complexity
-6. The "decision-free threshold" is binary — the agent can or can't fix it without human judgment
-7. Issue-side quality metrics are an open opportunity for agentic platforms
+1. The repository is overwhelmingly bot-authored by issue volume.
+2. The `community` label is incomplete as a sampling frame for non-maintainer issues.
+3. Category framing matters more than body length.
+4. Within labeled bugs, error output is the strongest helpful signal in the current sample.
+5. Repository-native PR linkage is sparse, so PR-side authorship claims need tighter evidence than loose `#N` references.
 
 ## Reproduce It
 
@@ -36,38 +42,41 @@ See the full analysis in the [blog post](https://skahessay.dev/posts/the-agent-i
 ./scripts/pull-issues.sh
 
 # Classify authors
-python scripts/classify-authors.py
+python3 scripts/classify-authors.py
 
 # Extract signals from issue bodies
-python scripts/extract-signals.py
+python3 scripts/extract-signals.py
 
-# Classify issue categories
-python scripts/classify-categories.py
+# Link issues to PRs
+python3 scripts/link-prs.py
 
-# Link issues to PRs and releases
-python scripts/link-prs.py
-
-# Run the full analysis
-python scripts/analyze.py
-
-# Generate charts
-python scripts/generate-charts.py
+# Roll up the analysis
+python3 scripts/analyze.py
 ```
 
-## Validation
+Generated outputs:
 
-`validation/hand-classified-sample.csv` contains 50 randomly selected issues classified by hand. `validation/validation-report.md` compares automated vs manual classification accuracy.
+- `data/processed/author-classification.json`
+- `data/processed/community-signals.json`
+- `data/processed/issue-pr-linkage.json`
+- `data/processed/analysis-results.json`
+- `findings/summary.md`
+
+## Method Notes
+
+- `community` means a non-bot issue author without merge rights in `github/gh-aw`.
+- Maintainers are identified only by merged PRs, not by PR volume or labels.
+- Category buckets (`doc`, `bug`, `enhancement`, `uncategorized`) are heuristic and should be treated as descriptive.
+- PR linkage only counts explicit closing phrases like `fixes #123`; plain `#123` references are excluded.
 
 ## Structure
 
-```
+```text
 data/
   raw/              # Raw JSON from GitHub API
   processed/        # Cleaned, classified datasets
-scripts/            # All data collection and analysis scripts
-validation/         # Hand-classified validation sample
-charts/             # Generated chart assets
-findings/           # Per-finding detailed writeups
+scripts/            # Data collection and analysis scripts
+findings/           # Generated markdown summary
 ```
 
 ## License
@@ -76,4 +85,4 @@ MIT
 
 ## Context
 
-This analysis grew out of contributing to gh-aw as a community member. Over the course of building [prd-to-prod](https://github.com/samuelkahessay/prd-to-prod), an autonomous software pipeline on top of gh-aw, I filed 23 issues and had 23 fixes shipped. That experience led to ["The New OSS"](https://skahessay.dev/posts/the-new-oss) — a qualitative essay about how diagnosis is replacing coding as the bottleneck skill. This repo is the quantitative follow-up.
+This analysis grew out of contributing to gh-aw as a community member. Over the course of building [prd-to-prod](https://github.com/samuelkahessay/prd-to-prod), an autonomous software pipeline on top of gh-aw, I filed issues against the platform and used those experiences as a starting point for a broader repository-level pass.

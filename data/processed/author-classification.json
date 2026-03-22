@@ -4,1010 +4,1338 @@
       "login": "app/github-actions",
       "role": "bot",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 6593,
+      "community_labeled_issue_count": 0
     },
     "samuelkahessay": {
       "login": "samuelkahessay",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 26,
+      "community_labeled_issue_count": 23
     },
     "mhavelock": {
       "login": "mhavelock",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "carlincherry": {
       "login": "carlincherry",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "mnkiefer": {
       "login": "mnkiefer",
       "role": "maintainer",
       "merge_count": 577,
-      "pr_count": 169
+      "pr_count": 169,
+      "issue_count": 40,
+      "community_labeled_issue_count": 1
     },
     "dsyme": {
       "login": "dsyme",
       "role": "maintainer",
       "merge_count": 129,
-      "pr_count": 108
+      "pr_count": 108,
+      "issue_count": 231,
+      "community_labeled_issue_count": 32
     },
     "bbonafed": {
       "login": "bbonafed",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 4,
+      "community_labeled_issue_count": 4
     },
     "kbreit-insight": {
       "login": "kbreit-insight",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "Infinnerty": {
       "login": "Infinnerty",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "Mossaka": {
       "login": "Mossaka",
       "role": "maintainer",
       "merge_count": 105,
-      "pr_count": 69
+      "pr_count": 69,
+      "issue_count": 58,
+      "community_labeled_issue_count": 2
     },
     "haritha-px": {
       "login": "haritha-px",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "chrizbo": {
       "login": "chrizbo",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 3,
+      "community_labeled_issue_count": 2
     },
     "molson504x": {
       "login": "molson504x",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 2
     },
     "porada": {
       "login": "porada",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 1
     },
     "jaroslawgajewski": {
       "login": "jaroslawgajewski",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 12,
+      "community_labeled_issue_count": 9
     },
     "benissimo": {
       "login": "benissimo",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "danielmeppiel": {
       "login": "danielmeppiel",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 4,
+      "community_labeled_issue_count": 3
     },
     "insop": {
       "login": "insop",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "pelikhan": {
       "login": "pelikhan",
       "role": "maintainer",
       "merge_count": 4126,
-      "pr_count": 25
+      "pr_count": 25,
+      "issue_count": 251,
+      "community_labeled_issue_count": 1
     },
     "mason-tim": {
       "login": "mason-tim",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 2
     },
     "NicoAvanzDev": {
       "login": "NicoAvanzDev",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 3,
+      "community_labeled_issue_count": 3
     },
     "lpcox": {
       "login": "lpcox",
       "role": "maintainer",
       "merge_count": 57,
-      "pr_count": 11
+      "pr_count": 11,
+      "issue_count": 14,
+      "community_labeled_issue_count": 0
     },
     "TiggySravan": {
       "login": "TiggySravan",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "Rubyj": {
       "login": "Rubyj",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 1
+      "pr_count": 1,
+      "issue_count": 3,
+      "community_labeled_issue_count": 2
     },
     "thi-feonir": {
       "login": "thi-feonir",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "veverkap": {
       "login": "veverkap",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 4,
+      "community_labeled_issue_count": 2
     },
     "stacktick": {
       "login": "stacktick",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 1
     },
     "johnpreed": {
       "login": "johnpreed",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "diogenesc": {
       "login": "diogenesc",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 0
     },
     "pholleran": {
       "login": "pholleran",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "Corb3nik": {
       "login": "Corb3nik",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 5,
+      "community_labeled_issue_count": 2
     },
     "strawgate": {
       "login": "strawgate",
-      "role": "maintainer",
+      "role": "community",
       "merge_count": 0,
-      "pr_count": 18
+      "pr_count": 18,
+      "issue_count": 66,
+      "community_labeled_issue_count": 39
     },
     "holwerda": {
       "login": "holwerda",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "arezero": {
       "login": "arezero",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 7,
+      "community_labeled_issue_count": 7
     },
     "alondahari": {
       "login": "alondahari",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "johnwilliams-12": {
       "login": "johnwilliams-12",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 13,
+      "community_labeled_issue_count": 12
     },
     "MattSkala": {
       "login": "MattSkala",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "microsasa": {
       "login": "microsasa",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 6,
+      "community_labeled_issue_count": 5
     },
     "k-jun": {
       "login": "k-jun",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "MH0386": {
       "login": "MH0386",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 2
     },
     "inigohidalgo": {
       "login": "inigohidalgo",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "glombard": {
       "login": "glombard",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "benvillalobos": {
       "login": "benvillalobos",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 18,
+      "community_labeled_issue_count": 11
     },
     "grahame-white": {
       "login": "grahame-white",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 5,
+      "community_labeled_issue_count": 5
     },
     "alexsiilvaa": {
       "login": "alexsiilvaa",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 2
     },
     "tore-unumed": {
       "login": "tore-unumed",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 8,
+      "community_labeled_issue_count": 6
     },
     "kdehl16-web": {
       "login": "kdehl16-web",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 1
+      "pr_count": 1,
+      "issue_count": 8,
+      "community_labeled_issue_count": 0
     },
     "rabo-unumed": {
       "login": "rabo-unumed",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "fr4nc1sc0-r4m0n": {
       "login": "fr4nc1sc0-r4m0n",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "bmerkle": {
       "login": "bmerkle",
-      "role": "maintainer",
+      "role": "community",
       "merge_count": 0,
-      "pr_count": 10
+      "pr_count": 10,
+      "issue_count": 20,
+      "community_labeled_issue_count": 1
     },
     "tspascoal": {
       "login": "tspascoal",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 4,
+      "community_labeled_issue_count": 2
     },
     "shea-parkes": {
       "login": "shea-parkes",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "mcantrell": {
       "login": "mcantrell",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "lukeed": {
       "login": "lukeed",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "DimaBir": {
       "login": "DimaBir",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "eaftan": {
       "login": "eaftan",
       "role": "maintainer",
       "merge_count": 6,
-      "pr_count": 10
+      "pr_count": 10,
+      "issue_count": 7,
+      "community_labeled_issue_count": 2
     },
     "rysweet": {
       "login": "rysweet",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "CiscoRob": {
       "login": "CiscoRob",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "mvdbos": {
       "login": "mvdbos",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 3,
+      "community_labeled_issue_count": 3
     },
     "heiskr": {
       "login": "heiskr",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "UncleBats": {
       "login": "UncleBats",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "mark-hingston": {
       "login": "mark-hingston",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "chepa92": {
       "login": "chepa92",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "G1Vh": {
       "login": "G1Vh",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "villarrealcecilia2024-png": {
       "login": "villarrealcecilia2024-png",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "samueltauil": {
       "login": "samueltauil",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 1
+      "pr_count": 1,
+      "issue_count": 2,
+      "community_labeled_issue_count": 0
     },
     "ericchansen": {
       "login": "ericchansen",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "Esomoire-consultancy-Company": {
       "login": "Esomoire-consultancy-Company",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "JanKrivanek": {
       "login": "JanKrivanek",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "tomasmed": {
       "login": "tomasmed",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "tinytelly": {
       "login": "tinytelly",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "corymhall": {
       "login": "corymhall",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 2
     },
     "deyaaeldeen": {
       "login": "deyaaeldeen",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 2
     },
     "lupinthe14th": {
       "login": "lupinthe14th",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 1
     },
     "Yoyokrazy": {
       "login": "Yoyokrazy",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 5,
+      "community_labeled_issue_count": 1
     },
     "srgibbs99": {
       "login": "srgibbs99",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 6,
+      "community_labeled_issue_count": 5
     },
     "straub": {
       "login": "straub",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 3,
+      "community_labeled_issue_count": 2
     },
     "jakecoffman": {
       "login": "jakecoffman",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "hrishikeshathalye": {
       "login": "hrishikeshathalye",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "MatthewLabasan-NBCU": {
       "login": "MatthewLabasan-NBCU",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "rspurgeon": {
       "login": "rspurgeon",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 4,
+      "community_labeled_issue_count": 3
     },
     "harrisoncramer": {
       "login": "harrisoncramer",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 1
+      "pr_count": 1,
+      "issue_count": 2,
+      "community_labeled_issue_count": 2
     },
     "swimmesberger": {
       "login": "swimmesberger",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "justinhuangcode": {
       "login": "justinhuangcode",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "hariatisalikon283-star": {
       "login": "hariatisalikon283-star",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "lfgcampos": {
       "login": "lfgcampos",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "abillingsley": {
       "login": "abillingsley",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "maxbeizer": {
       "login": "maxbeizer",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 1
     },
     "adhikjoshi": {
       "login": "adhikjoshi",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "heaversm": {
       "login": "heaversm",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "beardofedu": {
       "login": "beardofedu",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "aaronspindler": {
       "login": "aaronspindler",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "DrPye": {
       "login": "DrPye",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "AlexanderWert": {
       "login": "AlexanderWert",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 1
     },
     "erbanku": {
       "login": "erbanku",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "dulalbert": {
       "login": "dulalbert",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "Pierrci": {
       "login": "Pierrci",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "KGoovaer": {
       "login": "KGoovaer",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "sun793208-jpg": {
       "login": "sun793208-jpg",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "Krzysztof-Cieslak": {
       "login": "Krzysztof-Cieslak",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 1
     },
     "JoshGreenslade": {
       "login": "JoshGreenslade",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 2
     },
     "samus-aran": {
       "login": "samus-aran",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "theletterf": {
       "login": "theletterf",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "dsolteszopyn": {
       "login": "dsolteszopyn",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 3,
+      "community_labeled_issue_count": 2
     },
     "praveenkuttappan": {
       "login": "praveenkuttappan",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 2
     },
     "dhrapson": {
       "login": "dhrapson",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 3,
+      "community_labeled_issue_count": 2
     },
     "jeremiah-snee-openx": {
       "login": "jeremiah-snee-openx",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 5,
+      "community_labeled_issue_count": 2
     },
     "ViktorHofer": {
       "login": "ViktorHofer",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 1
+      "pr_count": 1,
+      "issue_count": 4,
+      "community_labeled_issue_count": 3
     },
     "plengauer": {
       "login": "plengauer",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "adam-cobb": {
       "login": "adam-cobb",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "mrjf": {
       "login": "mrjf",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 0
     },
     "BrandonLewis": {
       "login": "BrandonLewis",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "edkranz": {
       "login": "edkranz",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "Nikhil-Anand-DSG": {
       "login": "Nikhil-Anand-DSG",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "brunoborges": {
       "login": "brunoborges",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 0
     },
     "qwert666": {
       "login": "qwert666",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "davidahmann": {
       "login": "davidahmann",
-      "role": "maintainer",
+      "role": "community",
       "merge_count": 0,
-      "pr_count": 11
+      "pr_count": 11,
+      "issue_count": 9,
+      "community_labeled_issue_count": 3
     },
     "racedale": {
       "login": "racedale",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "Dan-Co": {
       "login": "Dan-Co",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "AmoebaChant": {
       "login": "AmoebaChant",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "askpt": {
       "login": "askpt",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "steliosfran": {
       "login": "steliosfran",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 4,
+      "community_labeled_issue_count": 3
     },
     "joperezr": {
       "login": "joperezr",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "SteveOfficerSeccl": {
       "login": "SteveOfficerSeccl",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "colinandres885-boop": {
       "login": "colinandres885-boop",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "Liamhetherington": {
       "login": "Liamhetherington",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "pmalarme": {
       "login": "pmalarme",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "ppusateri": {
       "login": "ppusateri",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 3,
+      "community_labeled_issue_count": 1
     },
     "rchiodo": {
       "login": "rchiodo",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "rmarinho": {
       "login": "rmarinho",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "thrasher-": {
       "login": "thrasher-",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "eran-medan": {
       "login": "eran-medan",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "sohail-unity": {
       "login": "sohail-unity",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "timdittler": {
       "login": "timdittler",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 3,
+      "community_labeled_issue_count": 3
     },
     "Phonesis": {
       "login": "Phonesis",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "mstrathman": {
       "login": "mstrathman",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 1
     },
     "NikolajBjorner": {
       "login": "NikolajBjorner",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "elika56": {
       "login": "elika56",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "petermefrandsen": {
       "login": "petermefrandsen",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "jbouder": {
       "login": "jbouder",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "otrajman": {
       "login": "otrajman",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "whoschek": {
       "login": "whoschek",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 1
     },
     "DataWizual-Labs": {
       "login": "DataWizual-Labs",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "dunalduck0": {
       "login": "dunalduck0",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 3,
+      "community_labeled_issue_count": 0
     },
     "jdrphillips": {
       "login": "jdrphillips",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "jfomhover": {
       "login": "jfomhover",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "dindinrosaot853-tech": {
       "login": "dindinrosaot853-tech",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 0
     },
     "anupamchugh": {
       "login": "anupamchugh",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "devantler": {
       "login": "devantler",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 3,
+      "community_labeled_issue_count": 0
     },
     "juliengloria": {
       "login": "juliengloria",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 3,
+      "community_labeled_issue_count": 0
     },
     "qmuntal": {
       "login": "qmuntal",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "app/agentic-workflows-dev": {
       "login": "app/agentic-workflows-dev",
       "role": "bot",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 55,
+      "community_labeled_issue_count": 0
     },
     "clubanderson": {
       "login": "clubanderson",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 1
+      "pr_count": 1,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "rafael-unloan": {
       "login": "rafael-unloan",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 1
     },
     "davidslater": {
       "login": "davidslater",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 3,
+      "community_labeled_issue_count": 0
     },
     "biz-tiwo": {
       "login": "biz-tiwo",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "ruokun-niu": {
       "login": "ruokun-niu",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "sozercan": {
       "login": "sozercan",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 0
     },
     "chandanrattan": {
       "login": "chandanrattan",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "quartermaine": {
       "login": "quartermaine",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 3,
+      "community_labeled_issue_count": 0
     },
     "yaananth": {
       "login": "yaananth",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 0
     },
     "raykao": {
       "login": "raykao",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "Wxy-clock": {
       "login": "Wxy-clock",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "Djiit": {
       "login": "Djiit",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 2,
+      "community_labeled_issue_count": 0
     },
     "colombod": {
       "login": "colombod",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     },
     "andyfeller": {
       "login": "andyfeller",
       "role": "community",
       "merge_count": 0,
-      "pr_count": 0
+      "pr_count": 0,
+      "issue_count": 1,
+      "community_labeled_issue_count": 0
     }
   },
   "maintainer_logins": [
     "Mossaka",
-    "bmerkle",
-    "davidahmann",
     "dsyme",
     "eaftan",
     "lpcox",
     "mnkiefer",
-    "pelikhan",
-    "salmanmkc",
-    "strawgate"
+    "pelikhan"
   ],
   "merge_counts": {
     "pelikhan": 4126,
@@ -1021,17 +1349,28 @@
     "total_authors": 166,
     "roles": {
       "bot": 2,
-      "community": 155,
-      "maintainer": 9
+      "community": 158,
+      "maintainer": 6
     },
     "issues_by_role": {
       "bot": 6648,
-      "community": 340,
-      "maintainer": 696
+      "community": 435,
+      "maintainer": 601
     },
     "total_issues": 7684,
-    "community_labeled": 297,
-    "human_filed": 1036,
-    "human_without_community": 739
+    "community_issues": 435,
+    "community_contributors": 158,
+    "community_labeled_community_issues": 259,
+    "community_unlabeled_community_issues": 176,
+    "community_label_coverage_pct": 59.5,
+    "community_labeled_by_role": {
+      "community": 259,
+      "maintainer": 38
+    },
+    "unlabeled_by_role": {
+      "bot": 6648,
+      "maintainer": 563,
+      "community": 176
+    }
   }
 }

@@ -1,24 +1,15 @@
 #!/usr/bin/env python3
 """
-Full analysis for "The Agent Interface" blog post.
+Roll up processed datasets into publishable descriptive results.
 
-Produces findings for all 7 sub-sections:
-4.1 Platform composition (bot vs human)
-4.2 Two intake paths (community vs maintainer)
-4.3 Controllable signals ranked by impact
-4.4 The decision-free threshold
-4.5 What reporters can't control
-4.6 Contributor archetypes
-4.7 The missing metric (issue-side quality)
-
-Outputs: data/processed/analysis-results.json
-         findings/*.md (per-finding writeups)
+Outputs:
+- data/processed/analysis-results.json
+- findings/summary.md
 """
 import json
-import math
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
-from statistics import median, mean, stdev
+from statistics import mean, median
 
 PROC = Path(__file__).parent.parent / "data" / "processed"
 FINDINGS = Path(__file__).parent.parent / "findings"
@@ -35,389 +26,356 @@ with open(PROC / "issue-pr-linkage.json") as f:
 
 community = signals["community_issues"]
 maintainer = signals["maintainer_issues"]
-timeline = signals["timeline"]
-
-# Helper
-def safe_median(vals):
-    return median(vals) if vals else None
-
-def safe_mean(vals):
-    return mean(vals) if vals else None
-
-def pct(n, total):
-    return round(n * 100 / total, 1) if total else 0
+closed = [issue for issue in community if issue["state"] == "CLOSED" and issue["daysToClose"] is not None]
 
 
-# ============================================================
-# 4.1: Platform composition
-# ============================================================
+def pct(numerator, denominator):
+    return round(numerator * 100 / denominator, 1) if denominator else 0.0
+
+
+def safe_median(values):
+    return round(median(values), 3) if values else None
+
+
+def safe_mean(values):
+    return round(mean(values), 3) if values else None
+
+
+def analyze_signal(pool, field):
+    with_signal = [issue for issue in pool if issue[field]]
+    without_signal = [issue for issue in pool if not issue[field]]
+    with_days = [issue["daysToClose"] for issue in with_signal]
+    without_days = [issue["daysToClose"] for issue in without_signal]
+
+    delta_pct = None
+    if with_days and without_days:
+        without_median = median(without_days)
+        with_median = median(with_days)
+        if without_median > 0:
+            delta_pct = round((with_median - without_median) / without_median * 100, 1)
+
+    return {
+        "with": {
+            "n": len(with_signal),
+            "medianDays": safe_median(with_days),
+            "sameDayPct": pct(sum(1 for day in with_days if day < 1), len(with_days)),
+        },
+        "without": {
+            "n": len(without_signal),
+            "medianDays": safe_median(without_days),
+            "sameDayPct": pct(sum(1 for day in without_days if day < 1), len(without_days)),
+        },
+        "deltaPct": delta_pct,
+    }
+
+
 print("=" * 60)
-print("4.1: PLATFORM COMPOSITION")
+print("PLATFORM COMPOSITION")
 print("=" * 60)
 
 total = signals["summary"]["total"]
 bot_count = signals["summary"]["bot_count"]
-community_count = signals["summary"]["community_count"]
 maintainer_count = signals["summary"]["maintainer_count"]
-
-print(f"Total issues: {total}")
-print(f"Bot: {bot_count} ({pct(bot_count, total)}%)")
-print(f"Maintainer: {maintainer_count} ({pct(maintainer_count, total)}%)")
-print(f"Community: {community_count} ({pct(community_count, total)}%)")
-print(f"Ratio: 1 community issue for every {bot_count // community_count} bot issues")
+community_count = signals["summary"]["community_count"]
 
 composition = {
     "total": total,
     "bot": {"count": bot_count, "pct": pct(bot_count, total)},
     "maintainer": {"count": maintainer_count, "pct": pct(maintainer_count, total)},
     "community": {"count": community_count, "pct": pct(community_count, total)},
-    "ratio_bot_per_community": bot_count // community_count,
-    "timeline": timeline,
+    "ratio_bot_per_community": round(bot_count / community_count, 1) if community_count else None,
+    "timeline": signals["timeline"],
 }
 
-# ============================================================
-# 4.2: Two intake paths
-# ============================================================
-print(f"\n{'=' * 60}")
-print("4.2: TWO INTAKE PATHS")
+print(f"Total issues: {total}")
+print(f"Bot issues: {bot_count} ({composition['bot']['pct']}%)")
+print(f"Maintainer issues: {maintainer_count} ({composition['maintainer']['pct']}%)")
+print(f"Community issues: {community_count} ({composition['community']['pct']}%)")
+
+print("\n" + "=" * 60)
+print("LABEL COVERAGE")
 print("=" * 60)
 
-# Community label coverage
-community_labeled = author_data["summary"]["community_labeled"]
-human_filed = author_data["summary"]["human_filed"]
-human_without = author_data["summary"]["human_without_community"]
-
-print(f"Human-filed issues: {human_filed}")
-print(f"With community label: {community_labeled} ({pct(community_labeled, human_filed)}%)")
-print(f"Without (maintainers): {human_without} ({pct(human_without, human_filed)}%)")
-
-# Label distribution on community issues
-label_counts = Counter()
-for issue in community:
-    for label in issue["labels"]:
-        label_counts[label] += 1
-
-print(f"\nTop labels on community issues:")
-for label, count in label_counts.most_common(15):
-    print(f"  {label}: {count} ({pct(count, len(community))}%)")
-
-intake_paths = {
-    "human_filed": human_filed,
-    "community_labeled": community_labeled,
-    "maintainer_unlabeled": human_without,
-    "community_label_rate": pct(community_labeled, human_filed),
-    "top_labels": dict(label_counts.most_common(15)),
+coverage_summary = author_data["summary"]
+label_coverage = {
+    "community_issues": coverage_summary["community_issues"],
+    "community_contributors": coverage_summary["community_contributors"],
+    "community_labeled_community_issues": coverage_summary["community_labeled_community_issues"],
+    "community_unlabeled_community_issues": coverage_summary["community_unlabeled_community_issues"],
+    "community_label_coverage_pct": coverage_summary["community_label_coverage_pct"],
 }
 
-# ============================================================
-# 4.3: Controllable signals ranked by impact
-# ============================================================
-print(f"\n{'=' * 60}")
-print("4.3: CONTROLLABLE SIGNALS")
+print(
+    "Community label coverage:",
+    f"{label_coverage['community_labeled_community_issues']}/{label_coverage['community_issues']}",
+    f"({label_coverage['community_label_coverage_pct']}%)",
+)
+
+print("\n" + "=" * 60)
+print("CATEGORY BREAKDOWN")
 print("=" * 60)
 
-closed = [i for i in community if i["state"] == "CLOSED" and i["daysToClose"] is not None]
-
-def analyze_signal(name, condition, subset=None):
-    pool = subset or closed
-    with_signal = [i for i in pool if condition(i)]
-    without_signal = [i for i in pool if not condition(i)]
-
-    with_days = [i["daysToClose"] for i in with_signal]
-    without_days = [i["daysToClose"] for i in without_signal]
-
-    w_med = safe_median(with_days)
-    wo_med = safe_median(without_days)
-    delta_pct = None
-    if w_med is not None and wo_med is not None and wo_med > 0:
-        delta_pct = round((w_med - wo_med) / wo_med * 100, 1)
-
-    w_same_day = sum(1 for d in with_days if d < 1)
-    wo_same_day = sum(1 for d in without_days if d < 1)
-
-    result = {
-        "with": {"n": len(with_signal), "medianDays": round(w_med, 3) if w_med else None,
-                 "sameDayPct": pct(w_same_day, len(with_days)) if with_days else None},
-        "without": {"n": len(without_signal), "medianDays": round(wo_med, 3) if wo_med else None,
-                    "sameDayPct": pct(wo_same_day, len(without_days)) if without_days else None},
-        "deltaPct": delta_pct,
-    }
-    print(f"  {name}:")
-    print(f"    With: n={result['with']['n']}, med={result['with']['medianDays']}d, same-day={result['with']['sameDayPct']}%")
-    print(f"    Without: n={result['without']['n']}, med={result['without']['medianDays']}d, same-day={result['without']['sameDayPct']}%")
-    print(f"    Delta: {delta_pct}%")
-    return result
-
-# All community issues
-print("\n--- All community (closed) ---")
-signals_all = {
-    "hasCodeBlock": analyze_signal("Code block", lambda i: i["hasCodeBlock"]),
-    "hasErrorOutput": analyze_signal("Error output", lambda i: i["hasErrorOutput"]),
-    "hasRunLink": analyze_signal("Run link", lambda i: i["hasRunLink"]),
-    "hasFilePath": analyze_signal("File path", lambda i: i["hasFilePath"]),
-    "hasProposedCode": analyze_signal("Proposed code", lambda i: i["hasProposedCode"]),
-    "hasSuggestedFix": analyze_signal("Suggested fix language", lambda i: i["hasSuggestedFix"]),
-    "hasReproSteps": analyze_signal("Repro steps", lambda i: i["hasReproSteps"]),
-}
-
-# Category breakdown
-print("\n--- By category (closed) ---")
 category_analysis = {}
-for cat in ["doc", "bug", "enhancement", "uncategorized"]:
-    cat_closed = [i for i in closed if i["category"] == cat]
-    cat_all = [i for i in community if i["category"] == cat]
-    days = [i["daysToClose"] for i in cat_closed]
-    same_day = sum(1 for d in days if d < 1)
-
-    copilot = sum(1 for i in cat_all if i["copilotDispatched"])
-
-    category_analysis[cat] = {
-        "total": len(cat_all),
-        "closed": len(cat_closed),
-        "open": len(cat_all) - len(cat_closed),
-        "closeRate": pct(len(cat_closed), len(cat_all)),
-        "medianDays": round(safe_median(days), 3) if days else None,
-        "meanDays": round(safe_mean(days), 3) if days else None,
-        "sameDayPct": pct(same_day, len(days)) if days else None,
-        "copilotDispatchPct": pct(copilot, len(cat_all)),
+for category in ["doc", "bug", "enhancement", "uncategorized"]:
+    category_all = [issue for issue in community if issue["category"] == category]
+    category_closed = [issue for issue in closed if issue["category"] == category]
+    days = [issue["daysToClose"] for issue in category_closed]
+    category_analysis[category] = {
+        "total": len(category_all),
+        "closed": len(category_closed),
+        "open": len(category_all) - len(category_closed),
+        "closeRate": pct(len(category_closed), len(category_all)),
+        "medianDays": safe_median(days),
+        "meanDays": safe_mean(days),
+        "sameDayPct": pct(sum(1 for day in days if day < 1), len(days)),
+        "copilotDispatchPct": pct(
+            sum(1 for issue in category_all if issue["copilotDispatched"]),
+            len(category_all),
+        ),
     }
-    print(f"  {cat}: n={len(cat_all)}, closed={len(cat_closed)}, med={category_analysis[cat]['medianDays']}d, same-day={category_analysis[cat]['sameDayPct']}%, copilot={category_analysis[cat]['copilotDispatchPct']}%")
+    print(
+        f"{category}:",
+        f"n={category_analysis[category]['total']},",
+        f"median={category_analysis[category]['medianDays']}d,",
+        f"same-day={category_analysis[category]['sameDayPct']}%,",
+        f"copilot={category_analysis[category]['copilotDispatchPct']}%",
+    )
 
-# Bugs only - controlled analysis
-print("\n--- Bugs only (closed) ---")
-bugs_closed = [i for i in closed if i["category"] == "bug"]
+print("\n" + "=" * 60)
+print("SIGNALS")
+print("=" * 60)
+
+signals_all = {
+    "hasCodeBlock": analyze_signal(closed, "hasCodeBlock"),
+    "hasErrorOutput": analyze_signal(closed, "hasErrorOutput"),
+    "hasRunLink": analyze_signal(closed, "hasRunLink"),
+    "hasFilePath": analyze_signal(closed, "hasFilePath"),
+    "hasLineNumber": analyze_signal(closed, "hasLineNumber"),
+    "hasProposedCode": analyze_signal(closed, "hasProposedCode"),
+    "hasSuggestedFix": analyze_signal(closed, "hasSuggestedFix"),
+    "hasReproSteps": analyze_signal(closed, "hasReproSteps"),
+}
+
+for name, result in signals_all.items():
+    print(
+        f"{name}:",
+        f"with={result['with']['medianDays']}d,",
+        f"without={result['without']['medianDays']}d,",
+        f"delta={result['deltaPct']}%",
+    )
+
+bugs_closed = [issue for issue in closed if issue["category"] == "bug"]
 signals_bugs = {}
 if bugs_closed:
     signals_bugs = {
-        "hasErrorOutput": analyze_signal("Error output (bugs)", lambda i: i["hasErrorOutput"], bugs_closed),
-        "hasRunLink": analyze_signal("Run link (bugs)", lambda i: i["hasRunLink"], bugs_closed),
-        "hasCodeBlock": analyze_signal("Code block (bugs)", lambda i: i["hasCodeBlock"], bugs_closed),
-        "hasFilePath": analyze_signal("File path (bugs)", lambda i: i["hasFilePath"], bugs_closed),
-        "hasProposedCode": analyze_signal("Proposed code (bugs)", lambda i: i["hasProposedCode"], bugs_closed),
+        "hasErrorOutput": analyze_signal(bugs_closed, "hasErrorOutput"),
+        "hasRunLink": analyze_signal(bugs_closed, "hasRunLink"),
+        "hasFilePath": analyze_signal(bugs_closed, "hasFilePath"),
+        "hasProposedCode": analyze_signal(bugs_closed, "hasProposedCode"),
+        "hasReproSteps": analyze_signal(bugs_closed, "hasReproSteps"),
     }
 
-# Scope analysis
-print("\n--- Scope (file paths referenced, closed) ---")
+print("\n" + "=" * 60)
+print("SCOPE AND LENGTH")
+print("=" * 60)
+
 scope_analysis = {}
-for bucket, low, high in [("none", 0, 0), ("narrow", 1, 2), ("medium", 3, 5), ("wide", 6, 100)]:
-    in_bucket = [i for i in closed if low <= i["filePathCount"] <= high]
-    days = [i["daysToClose"] for i in in_bucket]
-    same_day = sum(1 for d in days if d < 1)
+for bucket, low, high in [
+    ("none", 0, 0),
+    ("narrow", 1, 2),
+    ("medium", 3, 5),
+    ("wide", 6, 999999),
+]:
+    bucket_issues = [issue for issue in closed if low <= issue["filePathCount"] <= high]
+    days = [issue["daysToClose"] for issue in bucket_issues]
     scope_analysis[bucket] = {
-        "n": len(in_bucket),
-        "medianDays": round(safe_median(days), 3) if days else None,
-        "sameDayPct": pct(same_day, len(days)) if days else None,
+        "n": len(bucket_issues),
+        "medianDays": safe_median(days),
+        "sameDayPct": pct(sum(1 for day in days if day < 1), len(days)),
     }
-    print(f"  {bucket} ({low}-{high} files): n={len(in_bucket)}, med={scope_analysis[bucket]['medianDays']}d, same-day={scope_analysis[bucket]['sameDayPct']}%")
+    print(
+        f"{bucket}:",
+        f"n={scope_analysis[bucket]['n']},",
+        f"median={scope_analysis[bucket]['medianDays']}d,",
+        f"same-day={scope_analysis[bucket]['sameDayPct']}%",
+    )
 
-# Body length buckets
-print("\n--- Body length (closed) ---")
 length_analysis = {}
-for bucket, low, high in [("tiny", 0, 500), ("short", 501, 1500), ("medium", 1501, 3000), ("long", 3001, 6000), ("very_long", 6001, 999999)]:
-    in_bucket = [i for i in closed if low <= i["bodyLength"] <= high]
-    days = [i["daysToClose"] for i in in_bucket]
-    same_day = sum(1 for d in days if d < 1)
+for bucket, low, high in [
+    ("tiny", 0, 500),
+    ("short", 501, 1500),
+    ("medium", 1501, 3000),
+    ("long", 3001, 6000),
+    ("very_long", 6001, 999999),
+]:
+    bucket_issues = [issue for issue in closed if low <= issue["bodyLength"] <= high]
+    days = [issue["daysToClose"] for issue in bucket_issues]
     length_analysis[bucket] = {
-        "n": len(in_bucket),
-        "medianDays": round(safe_median(days), 3) if days else None,
-        "sameDayPct": pct(same_day, len(days)) if days else None,
+        "n": len(bucket_issues),
+        "medianDays": safe_median(days),
+        "sameDayPct": pct(sum(1 for day in days if day < 1), len(days)),
     }
-    print(f"  {bucket} ({low}-{high} chars): n={len(in_bucket)}, med={length_analysis[bucket]['medianDays']}d, same-day={length_analysis[bucket]['sameDayPct']}%")
+    print(
+        f"{bucket}:",
+        f"n={length_analysis[bucket]['n']},",
+        f"median={length_analysis[bucket]['medianDays']}d,",
+        f"same-day={length_analysis[bucket]['sameDayPct']}%",
+    )
 
-controllable = {
-    "signals_all": signals_all,
-    "signals_bugs": signals_bugs,
-    "category": category_analysis,
-    "scope": scope_analysis,
-    "length": length_analysis,
-}
-
-# ============================================================
-# 4.4: Decision-free threshold
-# ============================================================
-print(f"\n{'=' * 60}")
-print("4.4: DECISION-FREE THRESHOLD")
+print("\n" + "=" * 60)
+print("REPORTER / MAINTAINER FACTORS")
 print("=" * 60)
 
-# Classify as decision-free: doc + bug with narrow scope, vs design-required: enhancement + wide scope bugs
-decision_free = [i for i in closed if i["category"] in ("doc",) or
-                 (i["category"] in ("bug", "uncategorized") and i["filePathCount"] <= 2)]
-decision_required = [i for i in closed if i["category"] == "enhancement" or
-                     i["filePathCount"] > 2]
-
-df_days = [i["daysToClose"] for i in decision_free]
-dr_days = [i["daysToClose"] for i in decision_required]
-
-df_same_day = sum(1 for d in df_days if d < 1)
-dr_same_day = sum(1 for d in dr_days if d < 1)
-
-threshold = {
-    "decision_free": {
-        "n": len(decision_free),
-        "medianDays": round(safe_median(df_days), 3) if df_days else None,
-        "meanDays": round(safe_mean(df_days), 3) if df_days else None,
-        "sameDayPct": pct(df_same_day, len(df_days)),
-    },
-    "decision_required": {
-        "n": len(decision_required),
-        "medianDays": round(safe_median(dr_days), 3) if dr_days else None,
-        "meanDays": round(safe_mean(dr_days), 3) if dr_days else None,
-        "sameDayPct": pct(dr_same_day, len(dr_days)),
-    },
-    "distributions": {
-        "decision_free": sorted(df_days),
-        "decision_required": sorted(dr_days),
-    }
-}
-
-print(f"Decision-free: n={threshold['decision_free']['n']}, med={threshold['decision_free']['medianDays']}d, same-day={threshold['decision_free']['sameDayPct']}%")
-print(f"Decision-required: n={threshold['decision_required']['n']}, med={threshold['decision_required']['medianDays']}d, same-day={threshold['decision_required']['sameDayPct']}%")
-
-# ============================================================
-# 4.5: What reporters can't control
-# ============================================================
-print(f"\n{'=' * 60}")
-print("4.5: WHAT REPORTERS CAN'T CONTROL")
-print("=" * 60)
-
-# Copilot dispatch effect
-dispatched = [i for i in closed if i["copilotDispatched"]]
-not_dispatched = [i for i in closed if not i["copilotDispatched"]]
-
-disp_days = [i["daysToClose"] for i in dispatched]
-no_disp_days = [i["daysToClose"] for i in not_dispatched]
-
-print(f"Copilot dispatched: n={len(dispatched)}, med={round(safe_median(disp_days), 3) if disp_days else None}d")
-print(f"Not dispatched: n={len(not_dispatched)}, med={round(safe_median(no_disp_days), 3) if no_disp_days else None}d")
-
-# Reporter frequency effect
-author_issues = Counter(i["author"] for i in community)
-frequent = {a for a, c in author_issues.items() if c >= 5}
-infrequent = {a for a, c in author_issues.items() if c < 5}
-
-freq_closed = [i for i in closed if i["author"] in frequent]
-infreq_closed = [i for i in closed if i["author"] in infrequent]
-
-freq_days = [i["daysToClose"] for i in freq_closed]
-infreq_days = [i["daysToClose"] for i in infreq_closed]
-
-print(f"\nFrequent filers (5+ issues): n={len(freq_closed)}, med={round(safe_median(freq_days), 3) if freq_days else None}d")
-print(f"Infrequent filers (<5): n={len(infreq_closed)}, med={round(safe_median(infreq_days), 3) if infreq_days else None}d")
+author_issue_counts = Counter(issue["author"] for issue in community)
+frequent_authors = {author for author, count in author_issue_counts.items() if count >= 5}
+frequent_closed = [issue for issue in closed if issue["author"] in frequent_authors]
+infrequent_closed = [issue for issue in closed if issue["author"] not in frequent_authors]
 
 uncontrollable = {
     "copilot_dispatch": {
-        "dispatched": {"n": len(dispatched), "medianDays": round(safe_median(disp_days), 3) if disp_days else None},
-        "not_dispatched": {"n": len(not_dispatched), "medianDays": round(safe_median(no_disp_days), 3) if no_disp_days else None},
+        "dispatched": analyze_signal(closed, "copilotDispatched")["with"],
+        "not_dispatched": analyze_signal(closed, "copilotDispatched")["without"],
     },
     "reporter_frequency": {
-        "frequent": {"n": len(freq_closed), "medianDays": round(safe_median(freq_days), 3) if freq_days else None,
-                     "authors": len(frequent)},
-        "infrequent": {"n": len(infreq_closed), "medianDays": round(safe_median(infreq_days), 3) if infreq_days else None,
-                       "authors": len(infrequent)},
+        "frequent": {
+            "authors": len(frequent_authors),
+            "n": len(frequent_closed),
+            "medianDays": safe_median([issue["daysToClose"] for issue in frequent_closed]),
+        },
+        "infrequent": {
+            "authors": len(author_issue_counts) - len(frequent_authors),
+            "n": len(infrequent_closed),
+            "medianDays": safe_median([issue["daysToClose"] for issue in infrequent_closed]),
+        },
     },
 }
 
-# ============================================================
-# 4.6: Contributor archetypes
-# ============================================================
-print(f"\n{'=' * 60}")
-print("4.6: CONTRIBUTOR ARCHETYPES")
-print("=" * 60)
+print(
+    "Frequent filers:",
+    uncontrollable["reporter_frequency"]["frequent"]["n"],
+    "closed issues, median",
+    uncontrollable["reporter_frequency"]["frequent"]["medianDays"],
+    "days",
+)
+print(
+    "Infrequent filers:",
+    uncontrollable["reporter_frequency"]["infrequent"]["n"],
+    "closed issues, median",
+    uncontrollable["reporter_frequency"]["infrequent"]["medianDays"],
+    "days",
+)
 
-# Build per-author profiles (anonymized for the post)
-author_profiles = []
-for author, count in author_issues.most_common():
-    if count < 3:
-        continue
-    author_issues_list = [i for i in community if i["author"] == author]
-    author_closed = [i for i in author_issues_list if i["state"] == "CLOSED" and i["daysToClose"] is not None]
-    days = [i["daysToClose"] for i in author_closed]
-    body_lens = [i["bodyLength"] for i in author_issues_list]
-    categories = Counter(i["category"] for i in author_issues_list)
-    copilot = sum(1 for i in author_issues_list if i["copilotDispatched"])
-
-    profile = {
-        "author": author,
-        "totalIssues": count,
-        "closed": len(author_closed),
-        "open": count - len(author_closed),
-        "closeRate": pct(len(author_closed), count),
-        "medianDays": round(safe_median(days), 3) if days else None,
-        "avgBodyLength": round(safe_mean(body_lens)) if body_lens else None,
-        "categories": dict(categories),
-        "copilotDispatched": copilot,
-        "copilotRate": pct(copilot, count),
-    }
-    author_profiles.append(profile)
-    print(f"  @{author}: {count} issues, {profile['closeRate']}% close, med={profile['medianDays']}d, avg body={profile['avgBodyLength']} chars, copilot={profile['copilotRate']}%")
-
-# ============================================================
-# PR linkage analysis
-# ============================================================
-print(f"\n{'=' * 60}")
-print("PR LINKAGE ANALYSIS")
+print("\n" + "=" * 60)
+print("HIGH-CONFIDENCE PR LINKAGE")
 print("=" * 60)
 
 linkages = linkage_data["linkages"]
-merged = [l for l in linkages if l["prMergedAt"]]
-bot_prs = [l for l in merged if l["prAuthorIsBot"]]
-
-print(f"Issues with linked PRs: {linkage_data['summary']['issues_with_linked_prs']} / {linkage_data['summary']['community_issues_total']}")
-print(f"Merged fix PRs: {len(merged)}")
-print(f"Bot-authored: {len(bot_prs)} ({pct(len(bot_prs), len(merged))}%)")
-
-# Implementation time
-issue_to_pr = [l["issueToprDays"] for l in merged if l["issueToprDays"] is not None and l["issueToprDays"] >= 0]
-pr_to_merge = [l["prToMergeDays"] for l in merged if l["prToMergeDays"] is not None]
-issue_to_merge = [l["issueToMergeDays"] for l in merged if l["issueToMergeDays"] is not None and l["issueToMergeDays"] >= 0]
+merged_linkages = [linkage for linkage in linkages if linkage["prMergedAt"]]
+implementers = Counter(linkage["prAuthor"] for linkage in merged_linkages)
+mergers = Counter(linkage["prMergedBy"] for linkage in merged_linkages if linkage["prMergedBy"])
+pr_to_merge_days = [linkage["prToMergeDays"] for linkage in merged_linkages if linkage["prToMergeDays"] is not None]
+issue_to_merge_days = [linkage["issueToMergeDays"] for linkage in merged_linkages if linkage["issueToMergeDays"] is not None]
 
 pr_analysis = {
+    "confidence": linkage_data["summary"]["confidence"],
+    "method": linkage_data["summary"]["method"],
     "linked_issues": linkage_data["summary"]["issues_with_linked_prs"],
-    "total_community": linkage_data["summary"]["community_issues_total"],
-    "merged_prs": len(merged),
-    "bot_authored_pct": pct(len(bot_prs), len(merged)),
-    "issue_to_pr_median_days": round(safe_median(issue_to_pr), 3) if issue_to_pr else None,
-    "pr_to_merge_median_days": round(safe_median(pr_to_merge), 3) if pr_to_merge else None,
-    "issue_to_merge_median_days": round(safe_median(issue_to_merge), 3) if issue_to_merge else None,
-    "same_day_merge_pct": pct(sum(1 for d in issue_to_merge if d < 1), len(issue_to_merge)) if issue_to_merge else None,
+    "total_community_issues": linkage_data["summary"]["community_issues_total"],
+    "merged_prs": len(merged_linkages),
+    "bot_authored_pct": pct(
+        linkage_data["summary"]["bot_authored_merged"],
+        len(merged_linkages),
+    ),
+    "pr_to_merge_median_days": safe_median(pr_to_merge_days),
+    "issue_to_merge_median_days": safe_median(issue_to_merge_days),
+    "implementers": dict(implementers.most_common()),
+    "mergers": dict(mergers.most_common()),
 }
 
-print(f"Issue → PR median: {pr_analysis['issue_to_pr_median_days']} days")
-print(f"PR → Merge median: {pr_analysis['pr_to_merge_median_days']} days")
-print(f"Issue → Merge median: {pr_analysis['issue_to_merge_median_days']} days")
-print(f"Same-day merge: {pr_analysis['same_day_merge_pct']}%")
+print(
+    f"Linked community issues: {pr_analysis['linked_issues']} / {pr_analysis['total_community_issues']}"
+)
+print(f"Merged PRs: {pr_analysis['merged_prs']}")
+print(f"PR->merge median: {pr_analysis['pr_to_merge_median_days']} days")
 
-# Who implements
-implementers = Counter(l["prAuthor"] for l in merged)
-print(f"\nImplementers:")
-for impl, count in implementers.most_common(5):
-    print(f"  @{impl}: {count} ({pct(count, len(merged))}%)")
+author_profiles = []
+for author, total_issues in author_issue_counts.most_common():
+    if total_issues < 3:
+        continue
 
-# Who merges
-mergers = Counter(l["prMergedBy"] for l in merged if l["prMergedBy"])
-print(f"\nMergers:")
-for merger, count in mergers.most_common(5):
-    print(f"  @{merger}: {count} ({pct(count, len(merged))}%)")
+    author_issues = [issue for issue in community if issue["author"] == author]
+    author_closed = [issue for issue in author_issues if issue["state"] == "CLOSED" and issue["daysToClose"] is not None]
+    author_profiles.append(
+        {
+            "author": author,
+            "totalIssues": total_issues,
+            "closed": len(author_closed),
+            "open": total_issues - len(author_closed),
+            "closeRate": pct(len(author_closed), total_issues),
+            "medianDays": safe_median([issue["daysToClose"] for issue in author_closed]),
+            "avgBodyLength": round(mean(issue["bodyLength"] for issue in author_issues)),
+            "categories": dict(Counter(issue["category"] for issue in author_issues)),
+            "copilotDispatched": sum(1 for issue in author_issues if issue["copilotDispatched"]),
+            "copilotRate": pct(
+                sum(1 for issue in author_issues if issue["copilotDispatched"]),
+                total_issues,
+            ),
+        }
+    )
 
-# ============================================================
-# Compile all results
-# ============================================================
+limitations = [
+    'Role classification is conservative: "community" means any non-bot issue author without merge rights in gh-aw.',
+    "Category buckets are heuristic label/title groupings used for descriptive analysis, not causal inference.",
+    "PR linkage uses explicit closing references only; this is high precision but low recall.",
+    "The strongest directional signal appears inside the labeled bug subset, which is materially smaller than the full community sample.",
+]
+
 results = {
     "composition": composition,
-    "intake_paths": intake_paths,
-    "controllable": controllable,
-    "threshold": {k: v for k, v in threshold.items() if k != "distributions"},
-    "threshold_distributions": threshold["distributions"],
+    "label_coverage": label_coverage,
+    "category": category_analysis,
+    "signals_all": signals_all,
+    "signals_bugs": signals_bugs,
+    "scope": scope_analysis,
+    "length": length_analysis,
     "uncontrollable": uncontrollable,
     "archetypes": author_profiles,
     "pr_analysis": pr_analysis,
-    "pr_implementers": dict(implementers.most_common()),
-    "pr_mergers": dict(mergers.most_common()),
+    "limitations": limitations,
 }
 
 with open(PROC / "analysis-results.json", "w") as f:
     json.dump(results, f, indent=2)
 
-print(f"\n{'=' * 60}")
-print(f"SAVED: {PROC / 'analysis-results.json'}")
-print("=" * 60)
+summary_lines = [
+    "# Analysis Summary",
+    "",
+    "## Sample",
+    "",
+    f"- Total issues: {composition['total']}",
+    f"- Bot-authored issues: {composition['bot']['count']} ({composition['bot']['pct']}%)",
+    f"- Maintainer-authored issues: {composition['maintainer']['count']} ({composition['maintainer']['pct']}%)",
+    f"- Community issues: {composition['community']['count']} ({composition['community']['pct']}%) from {label_coverage['community_contributors']} contributors",
+    f"- Community label coverage on community issues: {label_coverage['community_label_coverage_pct']}%",
+    "",
+    "## Strongest descriptive patterns",
+    "",
+    f"- Enhancements have the slowest median closure time: {category_analysis['enhancement']['medianDays']} days.",
+    f"- Within labeled bugs, error output shifts median closure time from {signals_bugs['hasErrorOutput']['without']['medianDays']} to {signals_bugs['hasErrorOutput']['with']['medianDays']} days.",
+    f"- Body length is weakly informative: medians range from {length_analysis['tiny']['medianDays']} to {length_analysis['very_long']['medianDays']} days across buckets.",
+    f"- High-confidence PR linkage exists for {pr_analysis['linked_issues']} community issues ({pct(pr_analysis['linked_issues'], pr_analysis['total_community_issues'])}% of the sample).",
+    "",
+    "## Limitations",
+    "",
+]
+
+for limitation in limitations:
+    summary_lines.append(f"- {limitation}")
+
+summary_lines.append("")
+
+with open(FINDINGS / "summary.md", "w") as f:
+    f.write("\n".join(summary_lines))
+
+print("\nSaved to", PROC / "analysis-results.json")
+print("Saved to", FINDINGS / "summary.md")
