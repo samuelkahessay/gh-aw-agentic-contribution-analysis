@@ -12,7 +12,7 @@ The emphasis is descriptive, not causal:
 
 - author roles are defined conservatively
 - issue categories are heuristic label/title buckets
-- PR linkage is high precision and low recall
+- PR linkage uses filtered Timeline API associations, so PR-side numbers are moderate-confidence rather than definitive
 
 The goal is to make every published number traceable to code and generated artifacts.
 
@@ -23,7 +23,8 @@ The goal is to make every published number traceable to code and generated artif
 - **601 maintainer-authored issues** (7.8%)
 - **435 community issues** from **158** non-maintainer human contributors (5.7%)
 - **259 / 435** community issues carry the `community` label (59.5% coverage)
-- **13** high-confidence issue → PR links via explicit closing references
+- **192 / 379** closed community issues link to at least one plausible pre-close PR via the Timeline API
+- **177** linked PRs are merged; **156** are bot-authored (88.1%)
 
 ## Key Findings
 
@@ -33,7 +34,7 @@ See the full analysis in the [blog post](https://skahessay.dev/posts/the-agent-i
 2. The `community` label is incomplete as a sampling frame for non-maintainer issues.
 3. Category framing matters more than body length.
 4. Within labeled bugs, error output is the strongest helpful signal in the current sample.
-5. Repository-native PR linkage is sparse, so PR-side authorship claims need tighter evidence than loose `#N` references.
+5. In the filtered timeline-linked PR sample, most merged follow-up PRs are still bot-authored, but the issue-side findings are stronger than the PR-side attribution slice.
 
 ## Reproduce It
 
@@ -47,11 +48,18 @@ python3 scripts/classify-authors.py
 # Extract signals from issue bodies
 python3 scripts/extract-signals.py
 
-# Link issues to PRs
-python3 scripts/link-prs.py
+# Link issues to PRs with filtered Timeline API associations
+python3 scripts/link-prs-timeline.py
 
 # Roll up the analysis
 python3 scripts/analyze.py
+```
+
+Optional stricter baseline:
+
+```bash
+# Explicit closing-reference sample only
+python3 scripts/link-prs.py
 ```
 
 Generated outputs:
@@ -67,7 +75,8 @@ Generated outputs:
 - `community` means a non-bot issue author without merge rights in `github/gh-aw`.
 - Maintainers are identified only by merged PRs, not by PR volume or labels.
 - Category buckets (`doc`, `bug`, `enhancement`, `uncategorized`) are heuristic and should be treated as descriptive.
-- PR linkage only counts explicit closing phrases like `fixes #123`; plain `#123` references are excluded.
+- `link-prs-timeline.py` uses GitHub's `connected` and `cross-referenced` issue timeline events, then excludes any PR created after the issue was already closed.
+- `link-prs.py` remains available as a stricter explicit-closing-reference baseline with much lower recall.
 
 ## Structure
 

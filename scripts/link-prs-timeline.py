@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
 """
-Link community issues to fix PRs using the GitHub Timeline API.
+Link community issues to plausible fix PRs using the GitHub Timeline API.
 
-This script uses the `connected` and `cross-referenced` events from each
-issue's timeline, which capture GitHub's native issue-PR linkage — the same
-connection visible in the UI sidebar. This is higher recall than parsing
-PR body text for closing keywords.
+This script uses `connected` and `cross-referenced` issue timeline events to
+discover candidate PR associations, then filters out any PR created after the
+issue was already closed. That removes attribution/reporting PRs that mention
+historical issues after resolution while keeping the larger pre-close sample.
 
-Rate-limited: one API call per issue. For 435 issues, expect ~5-7 minutes.
-
-Outputs: data/processed/issue-pr-linkage.json (replaces previous version)
+Rate-limited: one API call per closed community issue.
 """
 import json
 import subprocess
@@ -17,7 +15,7 @@ import sys
 import time
 from pathlib import Path
 from datetime import datetime
-from collections import defaultdict, Counter
+from collections import Counter
 
 PROC = Path(__file__).parent.parent / "data" / "processed"
 RAW = Path(__file__).parent.parent / "data" / "raw"
@@ -83,6 +81,7 @@ def extract_pr_numbers(timeline_events):
 linkages = []
 issues_with_links = set()
 failed_fetches = 0
+excluded_post_close = 0
 
 for idx, issue in enumerate(closed_issues):
     num = issue["number"]
@@ -106,6 +105,7 @@ for idx, issue in enumerate(closed_issues):
         pr_merged = pr.get("mergedAt")
         merger = (pr.get("mergedBy") or {}).get("login") if pr.get("mergedBy") else None
         issue_created = issue.get("createdAt")
+        issue_closed = issue.get("closedAt")
 
         # Time calculations
         issue_to_pr_days = None
@@ -119,6 +119,16 @@ for idx, issue in enumerate(closed_issues):
                 issue_to_pr_days = (pc - ic).total_seconds() / 86400
                 if issue_to_pr_days < 0:
                     continue  # PR predates issue — not a fix
+            except (ValueError, TypeError):
+                pass
+
+        if issue_closed and pr_created:
+            try:
+                closed_dt = datetime.fromisoformat(issue_closed.replace("Z", "+00:00"))
+                created_dt = datetime.fromisoformat(pr_created.replace("Z", "+00:00"))
+                if created_dt > closed_dt:
+                    excluded_post_close += 1
+                    continue
             except (ValueError, TypeError):
                 pass
 
@@ -147,6 +157,7 @@ for idx, issue in enumerate(closed_issues):
             "issueAuthor": issue["author"],
             "issueCategory": issue["category"],
             "issueCreatedAt": issue_created,
+            "issueClosedAt": issue_closed,
             "prNumber": pr_num,
             "prTitle": pr.get("title", ""),
             "prAuthor": pr_author,
@@ -177,6 +188,7 @@ print(f"Issues processed: {len(closed_issues)}")
 print(f"Failed API fetches: {failed_fetches}")
 print(f"Issues with linked PRs: {len(issues_with_links)} / {len(closed_issues)}")
 print(f"Total linkages: {len(linkages)}")
+print(f"Excluded post-close PRs: {excluded_post_close}")
 print(f"Merged linkages: {len(merged)}")
 print(f"Bot-authored merged PRs: {len(bot_prs)} ({len(bot_prs)*100/len(merged) if merged else 0:.1f}%)")
 
@@ -210,11 +222,12 @@ if merged:
 output = {
     "linkages": linkages,
     "summary": {
-        "confidence": "high",
-        "method": "GitHub Timeline API (connected + cross-referenced events)",
+        "confidence": "moderate",
+        "method": "GitHub Timeline API associations filtered to PRs created before issue closure",
         "community_issues_total": len(community_issues),
         "closed_issues_processed": len(closed_issues),
         "failed_fetches": failed_fetches,
+        "excluded_post_close_prs": excluded_post_close,
         "issues_with_linked_prs": len(issues_with_links),
         "total_linkages": len(linkages),
         "merged_linkages": len(merged),

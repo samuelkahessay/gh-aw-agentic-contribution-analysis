@@ -13,11 +13,12 @@
 - Enhancements have the slowest median closure time: 2.974 days.
 - Within labeled bugs, error output shifts median closure time from 2.325 to 0.47 days.
 - Body length is weakly informative: medians range from 0.087 to 0.401 days across buckets.
-- High-confidence PR linkage exists for 210 community issues (48.3% of the sample).
+- Filtered timeline associations link 192 of 379 closed community issues (50.7%) to at least one plausible pre-close PR.
+- In that PR-side sample, 88.1% of merged linked PRs are bot-authored.
 
 ## Limitations
 
 - Role classification is conservative: "community" means any non-bot issue author without merge rights in gh-aw.
 - Category buckets are heuristic label/title groupings used for descriptive analysis, not causal inference.
-- PR linkage uses explicit closing references only; this is high precision but low recall.
-- The strongest directional signal appears inside the labeled bug subset, which is materially smaller than the full community sample.
+- PR linkage uses GitHub Timeline API associations filtered to PRs created before issue closure; this improves recall but still yields plausible rather than definitive fix links.
+- Issue-side findings are stronger than the PR-side authorship slice, which depends on moderate-confidence linkage heuristics.

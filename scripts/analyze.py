@@ -266,7 +266,7 @@ print(
 )
 
 print("\n" + "=" * 60)
-print("HIGH-CONFIDENCE PR LINKAGE")
+print("FILTERED TIMELINE PR LINKAGE")
 print("=" * 60)
 
 linkages = linkage_data["linkages"]
@@ -280,11 +280,17 @@ pr_analysis = {
     "confidence": linkage_data["summary"]["confidence"],
     "method": linkage_data["summary"]["method"],
     "linked_issues": linkage_data["summary"]["issues_with_linked_prs"],
+    "closed_community_issues": linkage_data["summary"]["closed_issues_processed"],
     "total_community_issues": linkage_data["summary"]["community_issues_total"],
+    "excluded_post_close_prs": linkage_data["summary"].get("excluded_post_close_prs", 0),
     "merged_prs": len(merged_linkages),
     "bot_authored_pct": pct(
         linkage_data["summary"]["bot_authored_merged"],
         len(merged_linkages),
+    ),
+    "linked_closed_issue_pct": pct(
+        linkage_data["summary"]["issues_with_linked_prs"],
+        linkage_data["summary"]["closed_issues_processed"],
     ),
     "pr_to_merge_median_days": safe_median(pr_to_merge_days),
     "issue_to_merge_median_days": safe_median(issue_to_merge_days),
@@ -293,7 +299,7 @@ pr_analysis = {
 }
 
 print(
-    f"Linked community issues: {pr_analysis['linked_issues']} / {pr_analysis['total_community_issues']}"
+    f"Linked closed community issues: {pr_analysis['linked_issues']} / {pr_analysis['closed_community_issues']}"
 )
 print(f"Merged PRs: {pr_analysis['merged_prs']}")
 print(f"PR->merge median: {pr_analysis['pr_to_merge_median_days']} days")
@@ -326,8 +332,8 @@ for author, total_issues in author_issue_counts.most_common():
 limitations = [
     'Role classification is conservative: "community" means any non-bot issue author without merge rights in gh-aw.',
     "Category buckets are heuristic label/title groupings used for descriptive analysis, not causal inference.",
-    "PR linkage uses explicit closing references only; this is high precision but low recall.",
-    "The strongest directional signal appears inside the labeled bug subset, which is materially smaller than the full community sample.",
+    "PR linkage uses GitHub Timeline API associations filtered to PRs created before issue closure; this improves recall but still yields plausible rather than definitive fix links.",
+    "Issue-side findings are stronger than the PR-side authorship slice, which depends on moderate-confidence linkage heuristics.",
 ]
 
 results = {
@@ -363,7 +369,8 @@ summary_lines = [
     f"- Enhancements have the slowest median closure time: {category_analysis['enhancement']['medianDays']} days.",
     f"- Within labeled bugs, error output shifts median closure time from {signals_bugs['hasErrorOutput']['without']['medianDays']} to {signals_bugs['hasErrorOutput']['with']['medianDays']} days.",
     f"- Body length is weakly informative: medians range from {length_analysis['tiny']['medianDays']} to {length_analysis['very_long']['medianDays']} days across buckets.",
-    f"- High-confidence PR linkage exists for {pr_analysis['linked_issues']} community issues ({pct(pr_analysis['linked_issues'], pr_analysis['total_community_issues'])}% of the sample).",
+    f"- Filtered timeline associations link {pr_analysis['linked_issues']} of {pr_analysis['closed_community_issues']} closed community issues ({pr_analysis['linked_closed_issue_pct']}%) to at least one plausible pre-close PR.",
+    f"- In that PR-side sample, {pr_analysis['bot_authored_pct']}% of merged linked PRs are bot-authored.",
     "",
     "## Limitations",
     "",

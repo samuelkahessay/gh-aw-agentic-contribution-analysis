@@ -903,34 +903,36 @@
     }
   ],
   "pr_analysis": {
-    "confidence": "high",
-    "method": "GitHub Timeline API (connected + cross-referenced events)",
-    "linked_issues": 210,
+    "confidence": "moderate",
+    "method": "GitHub Timeline API associations filtered to PRs created before issue closure",
+    "linked_issues": 192,
+    "closed_community_issues": 379,
     "total_community_issues": 435,
-    "merged_prs": 223,
-    "bot_authored_pct": 90.1,
-    "pr_to_merge_median_days": 0.034,
-    "issue_to_merge_median_days": 0.179,
+    "excluded_post_close_prs": 56,
+    "merged_prs": 177,
+    "bot_authored_pct": 88.1,
+    "linked_closed_issue_pct": 50.7,
+    "pr_to_merge_median_days": 0.035,
+    "issue_to_merge_median_days": 0.139,
     "implementers": {
-      "app/copilot-swe-agent": 187,
-      "app/github-actions": 14,
+      "app/copilot-swe-agent": 156,
       "strawgate": 12,
       "davidahmann": 3,
       "Mossaka": 2,
-      "bmerkle": 2,
       "samueltauil": 1,
       "ViktorHofer": 1,
-      "clubanderson": 1
+      "clubanderson": 1,
+      "bmerkle": 1
     },
     "mergers": {
-      "pelikhan": 221,
+      "pelikhan": 175,
       "Mossaka": 2
     }
   },
   "limitations": [
     "Role classification is conservative: \"community\" means any non-bot issue author without merge rights in gh-aw.",
     "Category buckets are heuristic label/title groupings used for descriptive analysis, not causal inference.",
-    "PR linkage uses explicit closing references only; this is high precision but low recall.",
-    "The strongest directional signal appears inside the labeled bug subset, which is materially smaller than the full community sample."
+    "PR linkage uses GitHub Timeline API associations filtered to PRs created before issue closure; this improves recall but still yields plausible rather than definitive fix links.",
+    "Issue-side findings are stronger than the PR-side authorship slice, which depends on moderate-confidence linkage heuristics."
   ]
 }
