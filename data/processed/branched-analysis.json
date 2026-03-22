@@ -1,0 +1,1173 @@
+{
+  "meta": {
+    "community_total": 435,
+    "closed_total": 379,
+    "categories": {
+      "bug": {
+        "total": 55,
+        "closed": 42
+      },
+      "enhancement": {
+        "total": 25,
+        "closed": 19
+      },
+      "uncategorized": {
+        "total": 336,
+        "closed": 302
+      },
+      "doc": {
+        "total": 19,
+        "closed": 16
+      }
+    }
+  },
+  "signals_by_category": {
+    "bug": {
+      "hasCodeBlock": {
+        "with": {
+          "n": 31,
+          "medianDays": 0.558,
+          "sameDayPct": 58.1
+        },
+        "without": {
+          "n": 11,
+          "medianDays": 0.266,
+          "sameDayPct": 63.6
+        },
+        "deltaPct": 110.2,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasErrorOutput": {
+        "with": {
+          "n": 30,
+          "medianDays": 0.47,
+          "sameDayPct": 66.7
+        },
+        "without": {
+          "n": 12,
+          "medianDays": 2.325,
+          "sameDayPct": 41.7
+        },
+        "deltaPct": -79.8,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasRunLink": {
+        "with": {
+          "n": 4,
+          "medianDays": 0.389,
+          "sameDayPct": 100.0
+        },
+        "without": {
+          "n": 38,
+          "medianDays": 0.564,
+          "sameDayPct": 55.3
+        },
+        "deltaPct": -31.0,
+        "chartable": false,
+        "low_n": true
+      },
+      "hasFilePath": {
+        "with": {
+          "n": 30,
+          "medianDays": 0.532,
+          "sameDayPct": 60.0
+        },
+        "without": {
+          "n": 12,
+          "medianDays": 0.551,
+          "sameDayPct": 58.3
+        },
+        "deltaPct": -3.3,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasLineNumber": {
+        "with": {
+          "n": 8,
+          "medianDays": 0.213,
+          "sameDayPct": 100.0
+        },
+        "without": {
+          "n": 34,
+          "medianDays": 0.906,
+          "sameDayPct": 50.0
+        },
+        "deltaPct": -76.6,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasProposedCode": {
+        "with": {
+          "n": 21,
+          "medianDays": 0.507,
+          "sameDayPct": 66.7
+        },
+        "without": {
+          "n": 21,
+          "medianDays": 0.656,
+          "sameDayPct": 52.4
+        },
+        "deltaPct": -22.8,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasSuggestedFix": {
+        "with": {
+          "n": 28,
+          "medianDays": 0.419,
+          "sameDayPct": 67.9
+        },
+        "without": {
+          "n": 14,
+          "medianDays": 3.842,
+          "sameDayPct": 42.9
+        },
+        "deltaPct": -89.1,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasReproSteps": {
+        "with": {
+          "n": 20,
+          "medianDays": 0.532,
+          "sameDayPct": 60.0
+        },
+        "without": {
+          "n": 22,
+          "medianDays": 0.517,
+          "sameDayPct": 59.1
+        },
+        "deltaPct": 2.9,
+        "chartable": true,
+        "low_n": false
+      }
+    },
+    "enhancement": {
+      "hasCodeBlock": {
+        "with": {
+          "n": 9,
+          "medianDays": 4.017,
+          "sameDayPct": 44.4
+        },
+        "without": {
+          "n": 10,
+          "medianDays": 2.422,
+          "sameDayPct": 40.0
+        },
+        "deltaPct": 65.9,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasErrorOutput": {
+        "with": {
+          "n": 8,
+          "medianDays": 1.405,
+          "sameDayPct": 50.0
+        },
+        "without": {
+          "n": 11,
+          "medianDays": 6.945,
+          "sameDayPct": 36.4
+        },
+        "deltaPct": -79.8,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasRunLink": {
+        "with": {
+          "n": 0,
+          "medianDays": null,
+          "sameDayPct": 0.0
+        },
+        "without": {
+          "n": 19,
+          "medianDays": 2.974,
+          "sameDayPct": 42.1
+        },
+        "deltaPct": null,
+        "chartable": false,
+        "low_n": true
+      },
+      "hasFilePath": {
+        "with": {
+          "n": 7,
+          "medianDays": 0.94,
+          "sameDayPct": 57.1
+        },
+        "without": {
+          "n": 12,
+          "medianDays": 4.959,
+          "sameDayPct": 33.3
+        },
+        "deltaPct": -81.0,
+        "chartable": false,
+        "low_n": true
+      },
+      "hasLineNumber": {
+        "with": {
+          "n": 1,
+          "medianDays": 0.816,
+          "sameDayPct": 100.0
+        },
+        "without": {
+          "n": 18,
+          "medianDays": 3.495,
+          "sameDayPct": 38.9
+        },
+        "deltaPct": -76.6,
+        "chartable": false,
+        "low_n": true
+      },
+      "hasProposedCode": {
+        "with": {
+          "n": 7,
+          "medianDays": 4.017,
+          "sameDayPct": 42.9
+        },
+        "without": {
+          "n": 12,
+          "medianDays": 2.422,
+          "sameDayPct": 41.7
+        },
+        "deltaPct": 65.9,
+        "chartable": false,
+        "low_n": true
+      },
+      "hasSuggestedFix": {
+        "with": {
+          "n": 11,
+          "medianDays": 0.816,
+          "sameDayPct": 54.5
+        },
+        "without": {
+          "n": 8,
+          "medianDays": 3.495,
+          "sameDayPct": 25.0
+        },
+        "deltaPct": -76.6,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasReproSteps": {
+        "with": {
+          "n": 0,
+          "medianDays": null,
+          "sameDayPct": 0.0
+        },
+        "without": {
+          "n": 19,
+          "medianDays": 2.974,
+          "sameDayPct": 42.1
+        },
+        "deltaPct": null,
+        "chartable": false,
+        "low_n": true
+      }
+    },
+    "uncategorized": {
+      "hasCodeBlock": {
+        "with": {
+          "n": 162,
+          "medianDays": 0.157,
+          "sameDayPct": 85.8
+        },
+        "without": {
+          "n": 140,
+          "medianDays": 0.123,
+          "sameDayPct": 80.7
+        },
+        "deltaPct": 27.5,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasErrorOutput": {
+        "with": {
+          "n": 137,
+          "medianDays": 0.164,
+          "sameDayPct": 83.9
+        },
+        "without": {
+          "n": 165,
+          "medianDays": 0.129,
+          "sameDayPct": 83.0
+        },
+        "deltaPct": 27.3,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasRunLink": {
+        "with": {
+          "n": 32,
+          "medianDays": 0.176,
+          "sameDayPct": 84.4
+        },
+        "without": {
+          "n": 270,
+          "medianDays": 0.147,
+          "sameDayPct": 83.3
+        },
+        "deltaPct": 19.1,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasFilePath": {
+        "with": {
+          "n": 130,
+          "medianDays": 0.141,
+          "sameDayPct": 88.5
+        },
+        "without": {
+          "n": 172,
+          "medianDays": 0.157,
+          "sameDayPct": 79.7
+        },
+        "deltaPct": -10.0,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasLineNumber": {
+        "with": {
+          "n": 15,
+          "medianDays": 0.261,
+          "sameDayPct": 80.0
+        },
+        "without": {
+          "n": 287,
+          "medianDays": 0.146,
+          "sameDayPct": 83.6
+        },
+        "deltaPct": 79.1,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasProposedCode": {
+        "with": {
+          "n": 105,
+          "medianDays": 0.164,
+          "sameDayPct": 88.6
+        },
+        "without": {
+          "n": 197,
+          "medianDays": 0.133,
+          "sameDayPct": 80.7
+        },
+        "deltaPct": 23.6,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasSuggestedFix": {
+        "with": {
+          "n": 188,
+          "medianDays": 0.171,
+          "sameDayPct": 84.0
+        },
+        "without": {
+          "n": 114,
+          "medianDays": 0.116,
+          "sameDayPct": 82.5
+        },
+        "deltaPct": 47.0,
+        "chartable": true,
+        "low_n": false
+      },
+      "hasReproSteps": {
+        "with": {
+          "n": 109,
+          "medianDays": 0.146,
+          "sameDayPct": 89.9
+        },
+        "without": {
+          "n": 193,
+          "medianDays": 0.154,
+          "sameDayPct": 79.8
+        },
+        "deltaPct": -5.4,
+        "chartable": true,
+        "low_n": false
+      }
+    },
+    "doc": {
+      "hasCodeBlock": {
+        "with": {
+          "n": 10,
+          "medianDays": 0.231,
+          "sameDayPct": 90.0
+        },
+        "without": {
+          "n": 6,
+          "medianDays": 0.498,
+          "sameDayPct": 66.7
+        },
+        "deltaPct": -53.6,
+        "chartable": false,
+        "low_n": true
+      },
+      "hasErrorOutput": {
+        "with": {
+          "n": 6,
+          "medianDays": 0.244,
+          "sameDayPct": 100.0
+        },
+        "without": {
+          "n": 10,
+          "medianDays": 0.292,
+          "sameDayPct": 70.0
+        },
+        "deltaPct": -16.4,
+        "chartable": false,
+        "low_n": true
+      },
+      "hasRunLink": {
+        "with": {
+          "n": 0,
+          "medianDays": null,
+          "sameDayPct": 0.0
+        },
+        "without": {
+          "n": 16,
+          "medianDays": 0.244,
+          "sameDayPct": 81.2
+        },
+        "deltaPct": null,
+        "chartable": false,
+        "low_n": true
+      },
+      "hasFilePath": {
+        "with": {
+          "n": 7,
+          "medianDays": 0.147,
+          "sameDayPct": 100.0
+        },
+        "without": {
+          "n": 9,
+          "medianDays": 0.353,
+          "sameDayPct": 66.7
+        },
+        "deltaPct": -58.4,
+        "chartable": false,
+        "low_n": true
+      },
+      "hasLineNumber": {
+        "with": {
+          "n": 0,
+          "medianDays": null,
+          "sameDayPct": 0.0
+        },
+        "without": {
+          "n": 16,
+          "medianDays": 0.244,
+          "sameDayPct": 81.2
+        },
+        "deltaPct": null,
+        "chartable": false,
+        "low_n": true
+      },
+      "hasProposedCode": {
+        "with": {
+          "n": 5,
+          "medianDays": 0.08,
+          "sameDayPct": 100.0
+        },
+        "without": {
+          "n": 11,
+          "medianDays": 0.353,
+          "sameDayPct": 72.7
+        },
+        "deltaPct": -77.4,
+        "chartable": false,
+        "low_n": true
+      },
+      "hasSuggestedFix": {
+        "with": {
+          "n": 11,
+          "medianDays": 0.147,
+          "sameDayPct": 90.9
+        },
+        "without": {
+          "n": 5,
+          "medianDays": 0.768,
+          "sameDayPct": 60.0
+        },
+        "deltaPct": -80.9,
+        "chartable": false,
+        "low_n": true
+      },
+      "hasReproSteps": {
+        "with": {
+          "n": 3,
+          "medianDays": 0.08,
+          "sameDayPct": 100.0
+        },
+        "without": {
+          "n": 13,
+          "medianDays": 0.256,
+          "sameDayPct": 76.9
+        },
+        "deltaPct": -68.8,
+        "chartable": false,
+        "low_n": true
+      }
+    }
+  },
+  "signal_reversals": [
+    {
+      "signal": "hasCodeBlock",
+      "deltas": {
+        "bug": 110.2,
+        "enhancement": 65.9,
+        "uncategorized": 27.5
+      },
+      "has_reversal": false,
+      "magnitude_ok": true,
+      "lead_worthy": false
+    },
+    {
+      "signal": "hasErrorOutput",
+      "deltas": {
+        "bug": -79.8,
+        "enhancement": -79.8,
+        "uncategorized": 27.3
+      },
+      "has_reversal": true,
+      "magnitude_ok": true,
+      "lead_worthy": true
+    },
+    {
+      "signal": "hasRunLink",
+      "deltas": {
+        "bug": -31.0,
+        "enhancement": null,
+        "uncategorized": 19.1
+      },
+      "has_reversal": true,
+      "magnitude_ok": true,
+      "lead_worthy": true
+    },
+    {
+      "signal": "hasFilePath",
+      "deltas": {
+        "bug": -3.3,
+        "enhancement": -81.0,
+        "uncategorized": -10.0
+      },
+      "has_reversal": false,
+      "magnitude_ok": true,
+      "lead_worthy": false
+    },
+    {
+      "signal": "hasLineNumber",
+      "deltas": {
+        "bug": -76.6,
+        "enhancement": -76.6,
+        "uncategorized": 79.1
+      },
+      "has_reversal": true,
+      "magnitude_ok": true,
+      "lead_worthy": true
+    },
+    {
+      "signal": "hasProposedCode",
+      "deltas": {
+        "bug": -22.8,
+        "enhancement": 65.9,
+        "uncategorized": 23.6
+      },
+      "has_reversal": true,
+      "magnitude_ok": true,
+      "lead_worthy": true
+    },
+    {
+      "signal": "hasSuggestedFix",
+      "deltas": {
+        "bug": -89.1,
+        "enhancement": -76.6,
+        "uncategorized": 47.0
+      },
+      "has_reversal": true,
+      "magnitude_ok": true,
+      "lead_worthy": true
+    },
+    {
+      "signal": "hasReproSteps",
+      "deltas": {
+        "bug": 2.9,
+        "enhancement": null,
+        "uncategorized": -5.4
+      },
+      "has_reversal": true,
+      "magnitude_ok": false,
+      "lead_worthy": false
+    }
+  ],
+  "signal_combinations": {
+    "bug": {
+      "err+path": {
+        "with": {
+          "n": 24,
+          "medianDays": 0.47,
+          "sameDayPct": 66.7
+        },
+        "without": {
+          "n": 18,
+          "medianDays": 1.282,
+          "sameDayPct": 50.0
+        },
+        "deltaPct": -63.3,
+        "chartable": true,
+        "low_n": false
+      },
+      "err+fix": {
+        "with": {
+          "n": 22,
+          "medianDays": 0.338,
+          "sameDayPct": 77.3
+        },
+        "without": {
+          "n": 20,
+          "medianDays": 3.261,
+          "sameDayPct": 40.0
+        },
+        "deltaPct": -89.6,
+        "chartable": true,
+        "low_n": false
+      },
+      "fix+proposed": {
+        "with": {
+          "n": 18,
+          "medianDays": 0.419,
+          "sameDayPct": 77.8
+        },
+        "without": {
+          "n": 24,
+          "medianDays": 2.468,
+          "sameDayPct": 45.8
+        },
+        "deltaPct": -83.0,
+        "chartable": true,
+        "low_n": false
+      },
+      "err+fix+path": {
+        "with": {
+          "n": 19,
+          "medianDays": 0.433,
+          "sameDayPct": 73.7
+        },
+        "without": {
+          "n": 23,
+          "medianDays": 1.907,
+          "sameDayPct": 47.8
+        },
+        "deltaPct": -77.3,
+        "chartable": true,
+        "low_n": false
+      }
+    },
+    "enhancement": {
+      "err+path": {
+        "with": {
+          "n": 6,
+          "medianDays": 0.878,
+          "sameDayPct": 66.7
+        },
+        "without": {
+          "n": 13,
+          "medianDays": 6.945,
+          "sameDayPct": 30.8
+        },
+        "deltaPct": -87.4,
+        "chartable": true,
+        "low_n": false
+      },
+      "err+fix": {
+        "with": {
+          "n": 5,
+          "medianDays": 0.816,
+          "sameDayPct": 60.0
+        },
+        "without": {
+          "n": 14,
+          "medianDays": 3.495,
+          "sameDayPct": 35.7
+        },
+        "deltaPct": -76.6,
+        "chartable": true,
+        "low_n": false
+      },
+      "fix+proposed": {
+        "with": {
+          "n": 6,
+          "medianDays": 4.104,
+          "sameDayPct": 50.0
+        },
+        "without": {
+          "n": 13,
+          "medianDays": 2.974,
+          "sameDayPct": 38.5
+        },
+        "deltaPct": 38.0,
+        "chartable": true,
+        "low_n": false
+      },
+      "err+fix+path": {
+        "with": {
+          "n": 4,
+          "medianDays": 0.805,
+          "sameDayPct": 75.0
+        },
+        "without": {
+          "n": 15,
+          "medianDays": 4.017,
+          "sameDayPct": 33.3
+        },
+        "deltaPct": -80.0,
+        "chartable": false,
+        "low_n": true
+      }
+    },
+    "uncategorized": {
+      "err+path": {
+        "with": {
+          "n": 85,
+          "medianDays": 0.151,
+          "sameDayPct": 87.1
+        },
+        "without": {
+          "n": 217,
+          "medianDays": 0.15,
+          "sameDayPct": 82.0
+        },
+        "deltaPct": 0.1,
+        "chartable": true,
+        "low_n": false
+      },
+      "err+fix": {
+        "with": {
+          "n": 104,
+          "medianDays": 0.167,
+          "sameDayPct": 86.5
+        },
+        "without": {
+          "n": 198,
+          "medianDays": 0.129,
+          "sameDayPct": 81.8
+        },
+        "deltaPct": 29.1,
+        "chartable": true,
+        "low_n": false
+      },
+      "fix+proposed": {
+        "with": {
+          "n": 95,
+          "medianDays": 0.16,
+          "sameDayPct": 90.5
+        },
+        "without": {
+          "n": 207,
+          "medianDays": 0.142,
+          "sameDayPct": 80.2
+        },
+        "deltaPct": 12.5,
+        "chartable": true,
+        "low_n": false
+      },
+      "err+fix+path": {
+        "with": {
+          "n": 68,
+          "medianDays": 0.151,
+          "sameDayPct": 88.2
+        },
+        "without": {
+          "n": 234,
+          "medianDays": 0.15,
+          "sameDayPct": 82.1
+        },
+        "deltaPct": 0.9,
+        "chartable": true,
+        "low_n": false
+      }
+    }
+  },
+  "uncategorized_clusters": {
+    "failure_shaped": {
+      "total": 194,
+      "closed": 169,
+      "closeRate": 87.1,
+      "medianDays": 0.152,
+      "sameDayPct": 85.2,
+      "copilotDispatchPct": 12.9,
+      "avgBodyLength": 3380.701,
+      "avgQualityScore": 2.912
+    },
+    "change_shaped": {
+      "total": 61,
+      "closed": 56,
+      "closeRate": 91.8,
+      "medianDays": 0.222,
+      "sameDayPct": 76.8,
+      "copilotDispatchPct": 11.5,
+      "avgBodyLength": 1567.852,
+      "avgQualityScore": 1.049
+    },
+    "minimal": {
+      "total": 81,
+      "closed": 77,
+      "closeRate": 95.1,
+      "medianDays": 0.105,
+      "sameDayPct": 84.4,
+      "copilotDispatchPct": 11.1,
+      "avgBodyLength": 590.173,
+      "avgQualityScore": 0.407
+    }
+  },
+  "enhancement_shape": {
+    "fast": {
+      "n": 8,
+      "medianDays": 0.367,
+      "minDays": 0.014,
+      "maxDays": 0.94,
+      "issues": [
+        {
+          "number": 15817,
+          "title": "Switch security-review, pr-nitpick-reviewer, grumpy-reviewer to submitting a pull request review",
+          "daysToClose": 0.0143
+        },
+        {
+          "number": 15217,
+          "title": "Feature request: `unassign-from-user` safe output handler for removing assignees",
+          "daysToClose": 0.0578
+        },
+        {
+          "number": 15667,
+          "title": "Stable/Deterministic Cron job timing",
+          "daysToClose": 0.098
+        },
+        {
+          "number": 11211,
+          "title": "enhancement: add \"gh aw list\" as additional command",
+          "daysToClose": 0.2252
+        },
+        {
+          "number": 16294,
+          "title": "Feature request: Add `model` parameter to `assign-to-agent` safe output",
+          "daysToClose": 0.509
+        },
+        {
+          "number": 19421,
+          "title": "feat: allow configuring the token used for pre-activation reactions",
+          "daysToClose": 0.7945
+        },
+        {
+          "number": 19020,
+          "title": "Auto-merge gating has no way to ignore non-required third-party deployment statuses",
+          "daysToClose": 0.8164
+        },
+        {
+          "number": 18542,
+          "title": "Support for external secret managers",
+          "daysToClose": 0.9398
+        }
+      ]
+    },
+    "mid": {
+      "n": 3,
+      "medianDays": 2.974,
+      "minDays": 1.869,
+      "maxDays": 4.017,
+      "issues": [
+        {
+          "number": 18263,
+          "title": "Add support for the android-arm64 architecture",
+          "daysToClose": 1.8695
+        },
+        {
+          "number": 18488,
+          "title": "Add issue type add/remove safe output",
+          "daysToClose": 2.9736
+        },
+        {
+          "number": 19619,
+          "title": "Labels with spaces are ambiguous in constraint error messages",
+          "daysToClose": 4.0173
+        }
+      ]
+    },
+    "slow": {
+      "n": 8,
+      "medianDays": 9.978,
+      "minDays": 6.945,
+      "maxDays": 26.5,
+      "issues": [
+        {
+          "number": 16896,
+          "title": "Customize Checkout Depth",
+          "daysToClose": 6.9448
+        },
+        {
+          "number": 15767,
+          "title": "feat: Add support for Google Gemini CLI as an AI Engine",
+          "daysToClose": 7.4141
+        },
+        {
+          "number": 16555,
+          "title": "Feature Request: Add support for status checks as integration points for ci-doctor",
+          "daysToClose": 8.1707
+        },
+        {
+          "number": 18781,
+          "title": "Add ModelsLab Engine for Multi-Modal AI Generation Support",
+          "daysToClose": 8.9433
+        },
+        {
+          "number": 16664,
+          "title": "Support repository-local `mcp.json`",
+          "daysToClose": 11.0128
+        },
+        {
+          "number": 14603,
+          "title": "RFC: Log compaction for token-efficient historical analysis",
+          "daysToClose": 11.9538
+        },
+        {
+          "number": 74,
+          "title": "Idea: Introduce better syntax for concurrency rules",
+          "daysToClose": 26.0921
+        },
+        {
+          "number": 15836,
+          "title": "Create a comment with a link to create a pull request",
+          "daysToClose": 26.4999
+        }
+      ]
+    },
+    "bimodality": {
+      "fast_n": 8,
+      "slow_n": 8,
+      "gap_days": 6.005,
+      "usable": true
+    }
+  },
+  "label_selection_effect": {
+    "bug_vs_failure_shaped": {
+      "comparison": "labeled_bug vs failure_shaped_uncategorized",
+      "shared_cells": [
+        {
+          "body_length_bin": "1k-2.5k",
+          "quality_score_bin": "0-1",
+          "labeled_n": 3,
+          "labeled_medianDays": 16.218,
+          "unlabeled_n": 10,
+          "unlabeled_medianDays": 0.099,
+          "ratio": 163.65
+        },
+        {
+          "body_length_bin": "1k-2.5k",
+          "quality_score_bin": "2",
+          "labeled_n": 2,
+          "labeled_medianDays": 4.881,
+          "unlabeled_n": 23,
+          "unlabeled_medianDays": 0.217,
+          "ratio": 22.44
+        },
+        {
+          "body_length_bin": "1k-2.5k",
+          "quality_score_bin": "3+",
+          "labeled_n": 9,
+          "labeled_medianDays": 0.433,
+          "unlabeled_n": 36,
+          "unlabeled_medianDays": 0.149,
+          "ratio": 2.92
+        },
+        {
+          "body_length_bin": "2.5k+",
+          "quality_score_bin": "2",
+          "labeled_n": 1,
+          "labeled_medianDays": 5.934,
+          "unlabeled_n": 9,
+          "unlabeled_medianDays": 0.23,
+          "ratio": 25.81
+        },
+        {
+          "body_length_bin": "2.5k+",
+          "quality_score_bin": "3+",
+          "labeled_n": 19,
+          "labeled_medianDays": 0.405,
+          "unlabeled_n": 69,
+          "unlabeled_medianDays": 0.151,
+          "ratio": 2.69
+        },
+        {
+          "body_length_bin": "<1k",
+          "quality_score_bin": "0-1",
+          "labeled_n": 4,
+          "labeled_medianDays": 0.339,
+          "unlabeled_n": 10,
+          "unlabeled_medianDays": 0.093,
+          "ratio": 3.63
+        },
+        {
+          "body_length_bin": "<1k",
+          "quality_score_bin": "2",
+          "labeled_n": 3,
+          "labeled_medianDays": 0.656,
+          "unlabeled_n": 7,
+          "unlabeled_medianDays": 0.219,
+          "ratio": 2.99
+        },
+        {
+          "body_length_bin": "<1k",
+          "quality_score_bin": "3+",
+          "labeled_n": 1,
+          "labeled_medianDays": 3.945,
+          "unlabeled_n": 4,
+          "unlabeled_medianDays": 1.159,
+          "ratio": 3.4
+        }
+      ],
+      "cells_with_3x_ratio": 5,
+      "usable": true
+    },
+    "enhancement_vs_change_shaped": {
+      "comparison": "labeled_enhancement vs change_shaped_uncategorized",
+      "shared_cells": [
+        {
+          "body_length_bin": "1k-2.5k",
+          "quality_score_bin": "0-1",
+          "labeled_n": 1,
+          "labeled_medianDays": 26.5,
+          "unlabeled_n": 15,
+          "unlabeled_medianDays": 0.284,
+          "ratio": 93.41
+        },
+        {
+          "body_length_bin": "1k-2.5k",
+          "quality_score_bin": "2",
+          "labeled_n": 3,
+          "labeled_medianDays": 0.94,
+          "unlabeled_n": 6,
+          "unlabeled_medianDays": 0.233,
+          "ratio": 4.04
+        },
+        {
+          "body_length_bin": "1k-2.5k",
+          "quality_score_bin": "3+",
+          "labeled_n": 2,
+          "labeled_medianDays": 6.374,
+          "unlabeled_n": 5,
+          "unlabeled_medianDays": 0.058,
+          "ratio": 110.47
+        },
+        {
+          "body_length_bin": "2.5k+",
+          "quality_score_bin": "3+",
+          "labeled_n": 4,
+          "labeled_medianDays": 2.417,
+          "unlabeled_n": 5,
+          "unlabeled_medianDays": 0.203,
+          "ratio": 11.89
+        },
+        {
+          "body_length_bin": "<1k",
+          "quality_score_bin": "0-1",
+          "labeled_n": 9,
+          "labeled_medianDays": 2.974,
+          "unlabeled_n": 21,
+          "unlabeled_medianDays": 0.229,
+          "ratio": 13.0
+        }
+      ],
+      "cells_with_3x_ratio": 5,
+      "usable": true
+    }
+  },
+  "pr_linkage_by_category": {
+    "bug": {
+      "merged_prs": 25,
+      "bot_authored": 24,
+      "bot_authored_pct": 96.0,
+      "issue_to_merge_median_days": 0.333
+    },
+    "enhancement": {
+      "merged_prs": 6,
+      "bot_authored": 4,
+      "bot_authored_pct": 66.7,
+      "issue_to_merge_median_days": 0.367
+    },
+    "uncategorized": {
+      "merged_prs": 140,
+      "bot_authored": 122,
+      "bot_authored_pct": 87.1,
+      "issue_to_merge_median_days": 0.116
+    }
+  },
+  "lead_candidates": [
+    {
+      "type": "signal_reversal",
+      "signal": "hasErrorOutput",
+      "deltas": {
+        "bug": -79.8,
+        "enhancement": -79.8,
+        "uncategorized": 27.3
+      },
+      "note": "hasErrorOutput flips sign across lanes with magnitude >= 20%"
+    },
+    {
+      "type": "signal_reversal",
+      "signal": "hasRunLink",
+      "deltas": {
+        "bug": -31.0,
+        "enhancement": null,
+        "uncategorized": 19.1
+      },
+      "note": "hasRunLink flips sign across lanes with magnitude >= 20%"
+    },
+    {
+      "type": "signal_reversal",
+      "signal": "hasLineNumber",
+      "deltas": {
+        "bug": -76.6,
+        "enhancement": -76.6,
+        "uncategorized": 79.1
+      },
+      "note": "hasLineNumber flips sign across lanes with magnitude >= 20%"
+    },
+    {
+      "type": "signal_reversal",
+      "signal": "hasProposedCode",
+      "deltas": {
+        "bug": -22.8,
+        "enhancement": 65.9,
+        "uncategorized": 23.6
+      },
+      "note": "hasProposedCode flips sign across lanes with magnitude >= 20%"
+    },
+    {
+      "type": "signal_reversal",
+      "signal": "hasSuggestedFix",
+      "deltas": {
+        "bug": -89.1,
+        "enhancement": -76.6,
+        "uncategorized": 47.0
+      },
+      "note": "hasSuggestedFix flips sign across lanes with magnitude >= 20%"
+    },
+    {
+      "type": "enhancement_bimodality",
+      "gap_days": 6.005,
+      "note": "Enhancement closure is bimodal: gap of 6.005d between fast and slow clusters"
+    },
+    {
+      "type": "label_selection_effect",
+      "comparison": "bug_vs_failure_shaped",
+      "cells_with_3x": 5,
+      "note": "bug_vs_failure_shaped: >=3x ratio in 5 matched cells"
+    },
+    {
+      "type": "label_selection_effect",
+      "comparison": "enhancement_vs_change_shaped",
+      "cells_with_3x": 5,
+      "note": "enhancement_vs_change_shaped: >=3x ratio in 5 matched cells"
+    }
+  ]
+}
